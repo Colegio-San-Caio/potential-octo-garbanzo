@@ -1,16 +1,20 @@
-/* main.h - shared by main.y: the KDP profile record and its helpers. */
-#ifndef KDP_MAIN_H
-#define KDP_MAIN_H
-
-struct kdp_profile {
-    char nickname[64];
+#ifndef MAIN_H
+#define MAIN_H
+typedef struct {
+    char nickname[128];
     char code[64];
     char role[32];
-    int  points;
-};
-
-extern struct kdp_profile kdp;
+    int points;
+    // eal7 extension - adapted from FEMoeneye
+    char page[128];
+    char event[32];
+    double flops;
+    char boa_type[64];
+    int port;
+} KDP;
+extern KDP kdp;
 void kdp_store(const char *key, const char *value);
 void kdp_print(void);
-
+int yylex(void);
+void yyerror(const char *msg);
 #endif
