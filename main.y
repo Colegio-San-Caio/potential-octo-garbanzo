@@ -17,21 +17,20 @@ static const char *src =
 "Port : 8038\n";
 %}
 %union { char *s; }
-%token BANNER
 %token <s> KEY VALUE
 %%
-profile : BANNER fields ;
+profile : fields ;
 fields  : field | fields field ;
 field   : KEY ':' VALUE { kdp_store($1,$3); free($1); free($3); } ;
 %%
 char *copy_n(const char *s,size_t n){char *p=malloc(n+1); memcpy(p,s,n); p[n]=0; return p;}
 int yylex(void){
  static int state=0; const char *s; size_t n;
- while(*src==' '||*src=='\n')src++; if(*src==0)return 0;
- if(state==0 && strncmp(src,"===",3)==0){while(*src&&*src!='\n')src++; return BANNER;}
- if(state==0){s=src; while(*src&&*src!=' '&&*src!=':'&&*src!='\n')src++; yylval.s=copy_n(s,src-s); state=1; return KEY;}
+ while(*src==' '||*src=='\n'||*src=='='||*src=='-'||*src=='+')src++; if(*src==0)return 0;
+ if(strncmp(src,"KDP Forum",9)==0||strncmp(src,"KDP Forum Profile",16)==0){while(*src&&*src!='\n')src++; return yylex();}
+ if(state==0){s=src; while(*src&&*src!=' '&&*src!=':'&&*src!='\n')src++; if(src==s)return *src++; yylval.s=copy_n(s,src-s); state=1; return KEY;}
  if(state==1){if(*src==':'){src++; state=2; return ':';} return *src++;}
- s=src; while(*src&&*src!='\n')src++; n=src-s; while(n>0&&s[n-1]==' ')n--; yylval.s=copy_n(s,n); state=0; return VALUE;
+ s=src; while(*src&&*src!='\n')src++; n=src-s; while(n>0&&(s[n-1]==' '||s[n-1]=='\r'))n--; yylval.s=copy_n(s,n); state=0; return VALUE;
 }
 void yyerror(const char *msg){fprintf(stderr,"parse error: %s\n",msg);}
 void kdp_store(const char *k,const char *v){
@@ -46,7 +45,7 @@ void kdp_store(const char *k,const char *v){
  else if(strcmp(k,"Port")==0) kdp.port=atoi(v);
 }
 void kdp_print(void){
- printf("=== KDP Forum Profile + eal7 QUAD ADAPTED ===\n");
+ printf("=== KDP Forum Profile + eal7 QUAD (yacc fixed) ===\n");
  printf("Nickname : %s\nCode     : %s\nRole     : %s\nPoints   : %d\n",kdp.nickname,kdp.code,kdp.role,kdp.points);
  printf("Page     : %s\nEvent    : %s\nFlops    : %.0f\nBOA      : %s\nPort     : %d\n",kdp.page,kdp.event,kdp.flops,kdp.boa,kdp.port);
  printf("=== FLOP QUADRUPLE 4+16+64=84 on %d ===\n",kdp.port);
