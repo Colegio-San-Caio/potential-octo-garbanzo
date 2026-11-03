@@ -1,46 +1,24 @@
 %{
-/* main.l - the KDP profile through a Lex (flex) scanner.
-   build: flex -o main.yy.c main.l && cc -o kdp_lex main.yy.c */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-static const char PROFILE[] =
-    "Nickname : KDPMember:KL5UQ4f48673352\n"
-    "Role : Member\n"
-    "Points : 1\n";
-
-static char nick[64];
-static char role[32];
-static int  points;
+static const char PROFILE[] = "Nickname : KDPMember:KL5UQ4f48673352\nRole : Member\nPoints : 1\nPage : main.ximg\nEvent : ximg_view\nFlops : 64\nBOA : application/vnd.x-mosfetq-dos-image\nPort : 8038\n";
+static char nick[64], role[32], page[64], event[32], boa[64]; static int points, port; static double flops;
 %}
-
 %option noyywrap noinput nounput
-
-ID      KDPMember:[A-Za-z0-9]+
-WORD    [A-Za-z]+
-
+ID [A-Za-z0-9:]+
 %%
-
-^"Nickname"[ \t]*":"[ \t]*{ID}  { sscanf(strchr(yytext, ':') + 1, " %63s", nick); }
-^"Role"[ \t]*":"[ \t]*{WORD}    { sscanf(strchr(yytext, ':') + 1, " %31s", role); }
-^"Points"[ \t]*":"[ \t]*[0-9]+  { points = atoi(strchr(yytext, ':') + 1); }
-\n|.                            { /* ignore everything else */ }
-
+^"Nickname"[ \t]*":"[^\n]* { sscanf(strchr(yytext,':')+1," %63s",nick); }
+^"Role"[ \t]*":"[^\n]* { sscanf(strchr(yytext,':')+1," %31s",role); }
+^"Points"[ \t]*":"[^\n]* { points=atoi(strchr(yytext,':')+1); }
+^"Page"[ \t]*":"[^\n]* { sscanf(strchr(yytext,':')+1," %63s",page); }
+^"Event"[ \t]*":"[^\n]* { sscanf(strchr(yytext,':')+1," %31s",event); }
+^"Flops"[ \t]*":"[^\n]* { flops=atof(strchr(yytext,':')+1); }
+^"BOA"[ \t]*":"[^\n]* { sscanf(strchr(yytext,':')+1," %63[^\n]",boa); }
+^"Port"[ \t]*":"[^\n]* { port=atoi(strchr(yytext,':')+1); }
+\n|. ;
 %%
-
-int main(void)
-{
-    YY_BUFFER_STATE b = yy_scan_string(PROFILE);
-    yylex();
-    yy_delete_buffer(b);
-
-    /* the short code after the "KDPMember:" prefix */
-    const char *code = strncmp(nick, "KDPMember:", 10) == 0 ? nick + 10 : nick;
-    printf("=== KDP Forum Profile ===\n");
-    printf("Nickname : %s\n", nick);
-    printf("Code     : %s\n", code);
-    printf("Role     : %s\n", role);
-    printf("Points   : %d\n", points);
-    return 0;
-}
+int main(void){ YY_BUFFER_STATE b=yy_scan_string(PROFILE); yylex(); yy_delete_buffer(b);
+ const char *code=strncmp(nick,"KDPMember:",10)==0?nick+10:nick;
+ printf("=== KDP Forum Profile + eal7 QUAD (lex) ===\nNickname : %s\nCode : %s\nRole : %s\nPoints : %d\nPage : %s\nEvent : %s\nFlops : %.0f\nBOA : %s\nPort : %d\n",nick,code,role,points,page,event,flops,boa,port);
+ return 0; }

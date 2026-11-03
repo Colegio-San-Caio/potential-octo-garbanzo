@@ -3,37 +3,52 @@
 #include <stdlib.h>
 #include <string.h>
 #include "main.h"
-KDP kdp = {.points=0, .flops=0, .port=8038};
+int yylex(void); void yyerror(const char *msg);
+struct kdp_profile kdp = {.points=1,.flops=64,.port=8038};
+static const char *src =
+"Nickname : KDPMember:KL5UQ4f48673352\n"
+"Code : KL5UQ4f48673352\n"
+"Role : Member\n"
+"Points : 1\n"
+"Page : main.ximg\n"
+"Event : ximg_view\n"
+"Flops : 64\n"
+"BOA : application/vnd.x-mosfetq-dos-image\n"
+"Port : 8038\n";
 %}
-%union { char *str; int num; double flt; }
-%token <str> KEY STRING
-%token <num> NUMBER
-%token <flt> FNUMBER
-%token COLON NEWLINE
+%union { char *s; }
+%token BANNER
+%token <s> KEY VALUE
 %%
-profile: /* empty */ | profile line ;
-line: KEY COLON STRING NEWLINE { kdp_store($1,$3); free($1); free($3); }
-    | KEY COLON NUMBER NEWLINE { char b[32]; snprintf(b,sizeof(b),"%d",$3); kdp_store($1,b); free($1); }
-    | KEY COLON FNUMBER NEWLINE { char b[32]; snprintf(b,sizeof(b),"%.0f",$3); kdp_store($1,b); free($1); }
-    | NEWLINE
-;
+profile : BANNER fields ;
+fields  : field | fields field ;
+field   : KEY ':' VALUE { kdp_store($1,$3); free($1); free($3); } ;
 %%
-void yyerror(const char *msg){ fprintf(stderr,"parse error: %s\n",msg); }
-void kdp_store(const char *key, const char *value){
-    if(strcmp(key,"Nickname")==0) snprintf(kdp.nickname,sizeof(kdp.nickname),"%s",value);
-    else if(strcmp(key,"Code")==0) snprintf(kdp.code,sizeof(kdp.code),"%s",value);
-    else if(strcmp(key,"Role")==0) snprintf(kdp.role,sizeof(kdp.role),"%s",value);
-    else if(strcmp(key,"Points")==0) kdp.points=atoi(value);
-    else if(strcmp(key,"Page")==0) snprintf(kdp.page,sizeof(kdp.page),"%s",value);
-    else if(strcmp(key,"Event")==0) snprintf(kdp.event,sizeof(kdp.event),"%s",value);
-    else if(strcmp(key,"Flops")==0) kdp.flops=atof(value);
-    else if(strcmp(key,"BOA")==0) snprintf(kdp.boa_type,sizeof(kdp.boa_type),"%s",value);
-    else if(strcmp(key,"Port")==0) kdp.port=atoi(value);
+char *copy_n(const char *s,size_t n){char *p=malloc(n+1); memcpy(p,s,n); p[n]=0; return p;}
+int yylex(void){
+ static int state=0; const char *s; size_t n;
+ while(*src==' '||*src=='\n')src++; if(*src==0)return 0;
+ if(state==0 && strncmp(src,"===",3)==0){while(*src&&*src!='\n')src++; return BANNER;}
+ if(state==0){s=src; while(*src&&*src!=' '&&*src!=':'&&*src!='\n')src++; yylval.s=copy_n(s,src-s); state=1; return KEY;}
+ if(state==1){if(*src==':'){src++; state=2; return ':';} return *src++;}
+ s=src; while(*src&&*src!='\n')src++; n=src-s; while(n>0&&s[n-1]==' ')n--; yylval.s=copy_n(s,n); state=0; return VALUE;
+}
+void yyerror(const char *msg){fprintf(stderr,"parse error: %s\n",msg);}
+void kdp_store(const char *k,const char *v){
+ if(strcmp(k,"Nickname")==0) snprintf(kdp.nickname,sizeof kdp.nickname,"%s",v);
+ else if(strcmp(k,"Code")==0) snprintf(kdp.code,sizeof kdp.code,"%s",v);
+ else if(strcmp(k,"Role")==0) snprintf(kdp.role,sizeof kdp.role,"%s",v);
+ else if(strcmp(k,"Points")==0) kdp.points=atoi(v);
+ else if(strcmp(k,"Page")==0) snprintf(kdp.page,sizeof kdp.page,"%s",v);
+ else if(strcmp(k,"Event")==0) snprintf(kdp.event,sizeof kdp.event,"%s",v);
+ else if(strcmp(k,"Flops")==0) kdp.flops=atof(v);
+ else if(strcmp(k,"BOA")==0) snprintf(kdp.boa,sizeof kdp.boa,"%s",v);
+ else if(strcmp(k,"Port")==0) kdp.port=atoi(v);
 }
 void kdp_print(void){
-    printf("=== KDP Forum Profile + eal7 QUAD ===\n");
-    printf("Nickname : %s\nCode     : %s\nRole     : %s\nPoints   : %d\n",kdp.nickname,kdp.code,kdp.role,kdp.points);
-    printf("Page     : %s\nEvent    : %s\nFlops    : %.0f\nBOA      : %s\nPort     : %d\n",kdp.page,kdp.event,kdp.flops,kdp.boa_type,kdp.port);
-    printf("=== FLOP QUADRUPLE: 4+16+64=%d ===\n",(int)(4+16+64));
+ printf("=== KDP Forum Profile + eal7 QUAD ADAPTED ===\n");
+ printf("Nickname : %s\nCode     : %s\nRole     : %s\nPoints   : %d\n",kdp.nickname,kdp.code,kdp.role,kdp.points);
+ printf("Page     : %s\nEvent    : %s\nFlops    : %.0f\nBOA      : %s\nPort     : %d\n",kdp.page,kdp.event,kdp.flops,kdp.boa,kdp.port);
+ printf("=== FLOP QUADRUPLE 4+16+64=84 on %d ===\n",kdp.port);
 }
-int main(void){ if(yyparse()!=0) return 1; kdp_print(); return 0; }
+int main(void){if(yyparse()!=0)return 1; kdp_print(); return 0;}
