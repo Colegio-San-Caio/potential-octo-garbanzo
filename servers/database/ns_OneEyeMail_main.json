@@ -1,0 +1,7 @@
+{
+  "server": "database",
+  "boa84": "BOA84 database server - OK",
+  "port": 8080,
+  "mode": "main",
+  "env": "main"
+}

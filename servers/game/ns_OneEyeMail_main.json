@@ -1,0 +1,7 @@
+{
+  "server": "game",
+  "boa84": "BOA84 game server - OK",
+  "port": 8080,
+  "mode": "main",
+  "env": "main"
+}
