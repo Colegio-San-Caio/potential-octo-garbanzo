@@ -29,3 +29,4 @@ jobs:
           perl perl/main.pl || true
           php php/main.php || true
           echo "BOA84 - All mains attempted"
+# Further mains - Full Stack image - added after
