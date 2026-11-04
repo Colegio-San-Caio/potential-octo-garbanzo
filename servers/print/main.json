@@ -1,0 +1,7 @@
+{
+  "server": "print",
+  "boa84": "BOA84 print server - OK",
+  "port": 8080,
+  "mode": "main",
+  "env": "main"
+}
