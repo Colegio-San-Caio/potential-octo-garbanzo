@@ -1,9 +1,8 @@
-# BOA84 FAT32 KDP - mail server - ADJUSTABLE
+# BOA84 FAT32 KDP - mail server - ADJUSTABLE - OneEyeMail
 import json, sys, os
-try:
-    cfg = json.load(open("servers/config.json"))["mail"]
-except:
-    cfg = {"port": 0, "mode": "main"}
-port = int(sys.argv[1]) if len(sys.argv) > 1 else int(os.environ.get("BOA84_PORT", cfg["port"]))
-mode = sys.argv[2] if len(sys.argv) > 2 else os.environ.get("BOA84_MODE", cfg["mode"])
-print(f"BOA84 mail server - OK - port={port} mode={mode}")
+# Simulates: user can make email + write email
+# Frontend in index.html saves to localStorage, this is the backend logic
+to = sys.argv[1] if len(sys.argv) > 1 else "user@example.com"
+subject = sys.argv[2] if len(sys.argv) > 2 else "BOA84 Test"
+body = sys.argv[3] if len(sys.argv) > 3 else "Hello from OneEyeMail"
+print(f"BOA84 mail server - OK - to={to} subject={subject} body={body[:40]}")
