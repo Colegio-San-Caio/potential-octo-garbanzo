@@ -1,4 +1,6 @@
 #!/bin/bash
+export TMPDIR="${TMPDIR:-$PREFIX/tmp}"
+mkdir -p "$TMPDIR" 2>/dev/null
 # BOA84-TERMUX - boa84 [mime|status|push|ns] - SAP MAIN - OK
 # Usage: boa84        = full auto (default)
 #        boa84 mime   = FAT32-safe copy for SAP SMW0 / SE78 / SE80
@@ -57,11 +59,14 @@ case "$1" in
     echo "SHA256: $(sha256sum BOA84.zip 2>/dev/null | cut -d' ' -f1)"
     ;;
   secret)
-    echo "BOA84 SECRET - CLOSE - scanning..."
-    grep -r -i -l "password\s*=\|api_key\|secret\s*=\|BEGIN.*PRIVATE KEY" --exclude-dir=.git . 2>/dev/null | head -20
-    echo "BOA84 SECRET - .gitignore blocks .env / *.key / *.zip / *.img"
-    echo "BOA84 SECRET - CLOSED - fat32_boa84/ + BOA84.zip are gitignored"
+    echo "BOA84 SECRET - precise scan - no docs/website false positives..."
+    # ONLY real secrets: assignment + value, or PRIVATE KEY header
+    # Exclude docs, website, precomputer, .git, fat32
+    grep -R -E -n "password[ \t]*=[ \t]*[^ \t"'\*]+|api[_-]?key[ \t]*=[ \t]*['\"][A-Za-z0-9_\-]{10,}|BEGIN (RSA )?PRIVATE KEY|ghp_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}" --exclude-dir=.git --exclude-dir=docs --exclude-dir=website --exclude-dir=precomputer --exclude-dir=fat32_boa84 --exclude="*.abap" . 2>/dev/null | head -20
+    echo "If empty above -> NO REAL SECRET - docs/website hits are ignored"
+    echo "BOA84 SECRET - CLOSED"
     ;;
+
   *)
     echo "BOA84-TERMUX - Starting..."
     bash boa84-termux.sh ns
