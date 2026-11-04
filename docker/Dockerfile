@@ -1,0 +1,3 @@
+# BOA84 FAT32 KDP KL5UQ4f48673352
+FROM alpine
+CMD ["echo","BOA84 Docker"]
