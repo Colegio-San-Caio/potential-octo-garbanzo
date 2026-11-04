@@ -1,0 +1,7 @@
+{
+  "server": "mail",
+  "boa84": "BOA84 mail server - OK",
+  "port": 8080,
+  "mode": "main",
+  "env": "main"
+}

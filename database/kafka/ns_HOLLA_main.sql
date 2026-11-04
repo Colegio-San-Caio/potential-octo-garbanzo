@@ -1,0 +1,1 @@
+-- BOA84 database kafka - OK
