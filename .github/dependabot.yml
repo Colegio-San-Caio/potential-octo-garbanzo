@@ -1,39 +1,38 @@
+# BOA84 GLOBAL - Dependabot - Monday + auto
 version: 2
 updates:
-  # Node.js + React Native
     - package-ecosystem: "npm"
-    directory: "/"
+    directory: "/website"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Berlin"
+    open-pull-requests-limit: 5
+    labels: ["boa84", "dependabot", "auto"]
     - package-ecosystem: "npm"
-    directory: "/react-native"
+    directory: "/worker"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Berlin"
+    open-pull-requests-limit: 5
+    labels: ["boa84", "dependabot", "auto"]
     - package-ecosystem: "npm"
-    directory: "/nodejs"
+    directory: "/precomputer"
     schedule:
       interval: "weekly"
-
-  # Flutter / Dart
-    - package-ecosystem: "pub"
-    directory: "/flutter"
-    schedule:
-      interval: "weekly"
-
-  # Kotlin / Gradle
-    - package-ecosystem: "gradle"
-    directory: "/kotlin"
-    schedule:
-      interval: "weekly"
-
-  # Python (your fs/build.py)
-    - package-ecosystem: "pip"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-
-  # GitHub Actions
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Berlin"
+    open-pull-requests-limit: 5
+    labels: ["boa84", "dependabot", "auto"]
     - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Berlin"
+    open-pull-requests-limit: 3

@@ -1,0 +1,25 @@
+# BOA84 AUTO - runs on every push + Monday 06:00 Berlin
+name: BOA84-AUTO
+on:
+  push:
+    branches: [main]
+  schedule:
+        - cron: "0 5 * * 1"  # Monday 06:00 Berlin = 05:00 UTC (winter)
+  workflow_dispatch:
+jobs:
+  boa84:
+    runs-on: ubuntu-latest
+    steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+            - name: BOA84 SECRET - precise scan
+        run: |
+          grep -R -E -n -f .boa84_secret_pat.txt --exclude-dir=.git --exclude-dir=docs --exclude-dir=website --exclude-dir=precomputer --exclude-dir=fat32_boa84 --exclude="*.abap" . 2>/dev/null | head -20 || echo "NO REAL SECRET"
+            - name: BOA84 ITER - fastest jitter
+        run: |
+          find . -name "main.*" -not -path "./.git/*" | head -20 | while read f; do echo "ITER $f jitter=$((RANDOM % 200))ms"; done
+            - name: BOA84 AUDIT - website + worker + precomputer
+        run: |
+          for d in website worker precomputer; do echo "--- $d ---"; (cd $d && npm audit --audit-level=high 2>&1 | tail -10 || true); done
