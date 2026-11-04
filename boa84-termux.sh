@@ -95,6 +95,11 @@ case "$1" in
     for d in website worker precomputer; do echo "=== $d ==="; (cd $d && npm install --legacy-peer-deps 2>&1 | tail -2; npm audit fix --legacy-peer-deps 2>&1 | tail -2 || true); done
     echo "BOA84 UPGRADE DONE - git add + push to trigger GitHub auto"
     ;;
+  mail)
+    NAME=${2:-Test}
+    echo "BOA84 MAIL - ns_oeneyeMail{name} -> $NAME"
+    sed "s/{name}/$NAME/g" ns_oeneyeMail
+    ;;
   *)
     echo "BOA84-TERMUX - Starting..."
     bash boa84-termux.sh ns

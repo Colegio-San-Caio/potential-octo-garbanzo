@@ -1,0 +1,15 @@
+# ns_oeneyeMail{name}
+# Usage: boa84 mail {name}  - or copy this file
+# Template for: {name}
+To: {name}@example.com
+Subject: BOA84 AUTO - {name} - upgrade done
+
+Hi {name},
+
+BOA84 AUTO-UPGRADE - realtime - done for {name}.
+- Website tests: fixed - npm ci lock sync
+- Nuxt: locked to real version in website/package-lock.json
+- Dependabot: Monday 06:00 Berlin
+- Upgrade: every 6h + every push
+
+BOA84 - {name}
