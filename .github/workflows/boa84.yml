@@ -5,26 +5,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: BOA84 - Python mains
+      - name: BOA84 - Python mains + Servers
         run: |
           echo "BOA84 FAT32 KDP - 4+16+64=84"
           python3 python/main.py || true
           python3 oop/main.py || true
           python3 networking/main.py || true
           for s in web mail database application dns proxy game file print; do python3 servers/$s/main.py || true; done
-      - name: BOA84 - JS / TS / Web mains
+      - name: BOA84 - JS Web mains
         run: |
           node javascript/main.js || true
           node nextjs/main.js || true
           node web3/main.js || true
-          node vue/src/main.js || true
           cat html/main.html || true
-          cat browsers/main.html || true
-          cat domains/main.html || true
       - name: BOA84 - Compiled mains
         run: |
           go run go/main.go || true
-          python3 -c "print('BOA84 Rust/Go/C++ check - continue-on-error')"
           g++ cpp/main.cpp -o /tmp/cpp_main && /tmp/cpp_main || true
           rustc rust/src/main.rs -o /tmp/rust_main && /tmp/rust_main || true
       - name: BOA84 - Other languages
@@ -32,5 +28,4 @@ jobs:
           ruby ruby/main.rb || true
           perl perl/main.pl || true
           php php/main.php || true
-          java java/Main.java || true
-          echo "BOA84 - All mains attempted - servers: web mail database application dns proxy game file print"
+          echo "BOA84 - All mains attempted"
