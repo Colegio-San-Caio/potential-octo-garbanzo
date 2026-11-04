@@ -21,3 +21,10 @@ if [ -d "$HOME/potential-octo-garbanzo" ] && [ -z "$BOA84_RAN" ]; then
   }
 fi
 # --- END BOA84 AUTO-PILOT ---
+
+# --- BOA84 TERMUX AUTO-PILOT ---
+if [ -z "$BOA84_RAN" ]; then
+  export BOA84_RAN=1
+  bash "$HOME/potential-octo-garbanzo/boa84-termux.sh" 2>/dev/null | tail -5
+fi
+# --- END BOA84 TERMUX ---
