@@ -1,9 +1,14 @@
-# BOA84 FAT32 KDP - application server - ADJUSTABLE
-import json, sys, os
+# BOA84 application server - ns_OneEyeMail - Adjustable - FIXED
+import sys, os, json
+# argv[1] can be name like 'web' OR port like '8080' - both OK now
+arg = sys.argv[1] if len(sys.argv) > 1 else ""
 try:
-    cfg = json.load(open("servers/config.json"))["application"]
+    port = int(arg)
 except:
-    cfg = {"port": 0, "mode": "main"}
-port = int(sys.argv[1]) if len(sys.argv) > 1 else int(os.environ.get("BOA84_PORT", cfg["port"]))
-mode = sys.argv[2] if len(sys.argv) > 2 else os.environ.get("BOA84_MODE", cfg["mode"])
-print(f"BOA84 application server - OK - port={port} mode={mode}")
+    port = 8080
+try:
+    cfg = json.load(open("servers/application/main.json"))
+    port = cfg.get("port", port)
+except:
+    pass
+print(f"BOA84 application server - ns_OneEyeMail - OK - port={port}")
