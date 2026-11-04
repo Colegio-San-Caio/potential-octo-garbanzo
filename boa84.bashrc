@@ -28,3 +28,4 @@ if [ -z "$BOA84_RAN" ]; then
   bash "$HOME/potential-octo-garbanzo/boa84-termux.sh" 2>/dev/null | tail -5
 fi
 # --- END BOA84 TERMUX ---
+export PATH="$HOME/bin:$PATH"
