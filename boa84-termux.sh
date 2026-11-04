@@ -67,6 +67,17 @@ case "$1" in
     echo "BOA84 SECRET - CLOSED"
     ;;
 
+  vuln)
+    echo "BOA84 VULN - Dependabot 25 - scanning manifests..."
+    find . -maxdepth 3 -name "package.json" -not -path "./.git/*" | head -5
+    find . -maxdepth 3 -name "requirements*.txt" -not -path "./.git/*" | head -5
+    # NPM audit if package.json exists at root
+    if [ -f package.json ]; then echo "--- NPM ---"; npm audit --audit-level=high 2>&1 | tail -20; npm audit fix 2>&1 | tail -5; fi
+    # Python audit if requirements exists
+    if [ -f requirements.txt ]; then echo "--- PIP ---"; pip install -q pip-audit 2>/dev/null; pip-audit -r requirements.txt 2>&1 | tail -20; fi
+    echo "BOA84 VULN - Fix: commit audit fixes, then GitHub Dependabot count drops"
+    echo "BOA84 VULN - Also enable: GitHub > Settings > Code security > Dependabot auto-update"
+    ;;
   *)
     echo "BOA84-TERMUX - Starting..."
     bash boa84-termux.sh ns
@@ -78,3 +89,4 @@ case "$1" in
 esac
 cd "$HOME"; echo "BOA84-TERMUX - DONE"
 # NOTE: zip + secret are handled by case below - see boa84_zip function
+# vuln is handled in case - see below
