@@ -11,5 +11,5 @@
     16
   ],
   "conclusion": "success",
-  "fs": "FAT32"
+  "fs": "fat32"
 }

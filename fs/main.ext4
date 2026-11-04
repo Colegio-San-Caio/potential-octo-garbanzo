@@ -11,6 +11,5 @@
     16
   ],
   "conclusion": "success",
-  "fs": "ext4",
-  "os": "Linux"
+  "fs": "ext4"
 }
