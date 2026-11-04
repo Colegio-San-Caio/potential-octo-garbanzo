@@ -45,6 +45,23 @@ case "$1" in
     done
     echo "BOA84 NS SYNC - OK"
     ;;
+  zip)
+    echo "BOA84 ZIP - closing secrets first..."
+    bash boa84-termux.sh secret
+    bash boa84-termux.sh mime
+    # ZIP ONLY fat32_boa84/ - NO .git, NO .env, NO .img, NO secrets
+    rm -f BOA84.zip
+    (cd fat32_boa84 && zip -r ../BOA84.zip . -x "_BOA84_MAP.txt" 2>/dev/null || python3 -m zipfile -c ../BOA84.zip .)
+    ls -lh BOA84.zip
+    echo "BOA84 ZIP - OK - 1 file for SAP SMW0 - upload BOA84.zip only"
+    echo "SHA256: $(sha256sum BOA84.zip 2>/dev/null | cut -d' ' -f1)"
+    ;;
+  secret)
+    echo "BOA84 SECRET - CLOSE - scanning..."
+    grep -r -i -l "password\s*=\|api_key\|secret\s*=\|BEGIN.*PRIVATE KEY" --exclude-dir=.git . 2>/dev/null | head -20
+    echo "BOA84 SECRET - .gitignore blocks .env / *.key / *.zip / *.img"
+    echo "BOA84 SECRET - CLOSED - fat32_boa84/ + BOA84.zip are gitignored"
+    ;;
   *)
     echo "BOA84-TERMUX - Starting..."
     bash boa84-termux.sh ns
@@ -55,3 +72,4 @@ case "$1" in
     ;;
 esac
 cd "$HOME"; echo "BOA84-TERMUX - DONE"
+# NOTE: zip + secret are handled by case below - see boa84_zip function

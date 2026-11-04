@@ -1,2 +1,22 @@
-.vscode.env
-*/.env
+# BOA84 - CLOSE SECRET - NEVER PUSH THESE
+.env
+*.env
+*.key
+*.pem
+*.p12
+*token*
+*secret*
+*password*
+id_rsa*
+*.pfx
+.env.local
+config/secrets*
+fat32_boa84/
+*.zip
+*.img
+*.iso
+*.dmg
+data.img
+date.img
+oeneyeOS.img
+GNUoeneyeALPINEUnix.img
