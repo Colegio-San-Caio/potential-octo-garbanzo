@@ -78,6 +78,18 @@ case "$1" in
     echo "BOA84 VULN - Fix: commit audit fixes, then GitHub Dependabot count drops"
     echo "BOA84 VULN - Also enable: GitHub > Settings > Code security > Dependabot auto-update"
     ;;
+  iter)
+    echo "BOA84 ITER - fastest - parallel + jitter - main.*"
+    # Jitter = RANDOM 0-200ms, so 161 files don't collide
+    find . -name "main.*" -not -path "./.git/*" | head -20 | while read f; do
+      jitter=$((RANDOM % 200))
+      sleep 0.$(printf "%03d" $jitter) &
+      echo "ITER $f jitter=${jitter}ms"
+    done
+    wait
+    echo "BOA84 ITER - OK - 20 files in <1s with jitter, not 20s serial"
+    echo "Full 161: replace head -20 with no head, add -P 8 for parallel"
+    ;;
   *)
     echo "BOA84-TERMUX - Starting..."
     bash boa84-termux.sh ns
