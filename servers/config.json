@@ -1,0 +1,11 @@
+{
+  "web": {"port": 8080, "mode": "main"},
+  "mail": {"port": 8025, "mode": "main"},
+  "database": {"port": 5432, "mode": "main"},
+  "application": {"port": 8000, "mode": "main"},
+  "dns": {"port": 5353, "mode": "main"},
+  "proxy": {"port": 3128, "mode": "main"},
+  "game": {"port": 9000, "mode": "main"},
+  "file": {"port": 2121, "mode": "main"},
+  "print": {"port": 9100, "mode": "main"}
+}
