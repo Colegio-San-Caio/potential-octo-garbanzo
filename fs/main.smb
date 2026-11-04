@@ -1,15 +1,15 @@
-# main.smb - a Samba share (smb.conf fragment) serving the KDP profile, read-only, local only.
-# 1. put the file in place:  sudo mkdir -p /srv/kdp && sudo cp MAIN.TXT /srv/kdp/
-# 2. append this to /etc/samba/smb.conf, then: sudo systemctl restart smbd
-# 3. add the user: sudo smbpasswd -a kai
-# 4. read it:  smbclient //127.0.0.1/kdp -U kai -c 'get MAIN.TXT -'
-[global]
-   interfaces = lo
-   bind interfaces only = yes
-
-[kdp]
-   comment = KDP profile (read only)
-   path = /srv/kdp
-   read only = yes
-   guest ok = no
-   valid users = kai
+{
+  "kdp": "KDPMember:KL5UQ4f48673352",
+  "BOA": "application/vnd.x-mosfetq-dos-image",
+  "IANA": 1460172,
+  "PORT": 8038,
+  "FLOP_QUADRUPLE": "4+16+64=84",
+  "total_flops_quadruple": 84,
+  "matrix": [
+    4,
+    64,
+    16
+  ],
+  "conclusion": "success",
+  "fs": "SMB"
+}
