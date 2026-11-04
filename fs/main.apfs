@@ -1,0 +1,13 @@
+#!/bin/sh
+# main.apfs - an APFS disk image with MAIN.TXT inside. Creating APFS needs macOS 10.13+.
+# usage (on a Mac): sh main.apfs
+if ! command -v hdiutil >/dev/null; then
+  echo "hdiutil not found: run this on macOS. (Linux can only read APFS, e.g. apfs-fuse.)"
+  exit 1
+fi
+hdiutil create -size 32m -fs APFS -volname KDP -ov kdp-apfs.dmg >/dev/null || exit 1
+MNT=$(hdiutil attach kdp-apfs.dmg | awk -F'\t' '/\/Volumes\//{print $NF}')
+printf '=== KDP Forum Profile ===\nNickname : KDPMember:KL5UQ4f48673352\nCode     : KL5UQ4f48673352\nRole     : Member\nPoints   : 1\n' > "$MNT/MAIN.TXT"
+cat "$MNT/MAIN.TXT"
+hdiutil detach "$MNT" >/dev/null
+echo "wrote kdp-apfs.dmg (APFS, volume KDP)"

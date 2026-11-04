@@ -1,0 +1,10 @@
+#!/bin/sh
+# main.ntfs - an NTFS image with MAIN.TXT inside, built without mounting.
+# usage: sh main.ntfs [image]         default image: $TMPDIR/kdp-ntfs.img
+# needs: mkntfs and ntfscp from ntfs-3g (Debian: apt install ntfs-3g)
+IMG=${1:-${TMPDIR:-/tmp}/kdp-ntfs.img}
+TXT=${TMPDIR:-/tmp}/MAIN.TXT
+printf '=== KDP Forum Profile ===\r\nNickname : KDPMember:KL5UQ4f48673352\r\nCode     : KL5UQ4f48673352\r\nRole     : Member\r\nPoints   : 1\r\n' > "$TXT"
+for t in mkntfs ntfscp; do command -v $t >/dev/null || { echo "$t not found (apt install ntfs-3g)"; exit 1; }; done
+rm -f "$IMG"; truncate -s 16M "$IMG"
+mkntfs -F -Q -L KDP "$IMG" >/dev/null && ntfscp -f "$IMG" "$TXT" MAIN.TXT && echo "wrote MAIN.TXT into $IMG (NTFS, label KDP)"

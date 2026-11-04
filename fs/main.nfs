@@ -1,0 +1,5 @@
+# main.nfs - an NFS export (/etc/exports line) serving the KDP profile, read-only, local only.
+# 1. put the file in place:  sudo mkdir -p /srv/kdp && sudo cp MAIN.TXT /srv/kdp/
+# 2. append this line to /etc/exports, then: sudo exportfs -ra
+# 3. read it:  sudo mount -t nfs 127.0.0.1:/srv/kdp /mnt && cat /mnt/MAIN.TXT
+/srv/kdp 127.0.0.1(ro,sync,no_subtree_check)

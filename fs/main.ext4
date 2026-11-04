@@ -1,0 +1,23 @@
+#!/bin/sh
+# main.ext4 - the KDP profile as the file /MAIN in a real ext4 image (no root needed).
+# usage: sh main.ext4 [image]        default image: $TMPDIR/kdp-ext4.img
+# needs: mke2fs from e2fsprogs 1.43+ (-d fills the image from a directory), debugfs to read it back
+IMG=${1:-${TMPDIR:-/tmp}/kdp-ext4.img}
+DIR=$(mktemp -d)
+trap 'rm -rf "$DIR"' EXIT
+
+cat > "$DIR/MAIN" <<'TXT'
+=== KDP Forum Profile ===
+Nickname : KDPMember:KL5UQ4f48673352
+Code     : KL5UQ4f48673352
+Role     : Member
+Points   : 1
+TXT
+
+rm -f "$IMG"
+truncate -s 16M "$IMG"
+mke2fs -q -t ext4 -L KDP -d "$DIR" "$IMG" || exit 1
+echo "--- $IMG (ext4, label KDP) ---"
+debugfs -R "ls -l /" "$IMG" 2>/dev/null
+echo "--- /MAIN ---"
+debugfs -R "cat /MAIN" "$IMG" 2>/dev/null

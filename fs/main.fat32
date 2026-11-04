@@ -1,0 +1,92 @@
+#!/usr/bin/env python3
+"""main.fat32 - the KDP profile as MAIN.TXT in a real FAT32 image (pure Python, no tools).
+
+usage: python3 main.fat32 [image]      default: kdp-fat32.img in $TMPDIR (a sparse ~34 MB file)
+FAT32 needs at least 65525 clusters, so the image is that big; only a few sectors are written.
+"""
+import os
+import struct
+import sys
+import tempfile
+
+ID = "KDPMember:KL5UQ4f48673352"
+TEXT = ("=== KDP Forum Profile ===\r\nNickname : %s\r\nCode     : %s\r\n"
+        "Role     : Member\r\nPoints   : 1\r\n" % (ID, ID[len("KDPMember:"):])).encode("ascii")
+S, TOTAL, RESERVED, FATSZ = 512, 70000, 32, 547      # 1 sector per cluster, 2 FATs
+FAT_START = RESERVED
+DATA_START = RESERVED + 2 * FATSZ                      # sector of cluster 2
+CLUSTERS = TOTAL - DATA_START
+assert CLUSTERS >= 65525 and (CLUSTERS + 2) * 4 <= FATSZ * S
+
+
+def sector(n):
+    return n * S
+
+
+def build(path):
+    boot = bytearray(S)
+    boot[0:3] = b"\xEB\x58\x90"
+    boot[3:11] = b"KDPFAT32"
+    struct.pack_into("<HBHBHHBHHHII", boot, 11, S, 1, RESERVED, 2, 0, 0, 0xF8, 0, 63, 255, 0, TOTAL)
+    struct.pack_into("<IHHIHH12sBBBI11s8s", boot, 36, FATSZ, 0, 0, 2, 1, 6, b"", 0x80, 0, 0x29,
+                     0x4B445046, b"KDPFAT32   ", b"FAT32   ")
+    boot[510:512] = b"\x55\xAA"
+
+    fsinfo = bytearray(S)
+    struct.pack_into("<I", fsinfo, 0, 0x41615252)
+    struct.pack_into("<I", fsinfo, 484, 0x61417272)
+    struct.pack_into("<II", fsinfo, 488, 0xFFFFFFFF, 0xFFFFFFFF)
+    fsinfo[508:512] = b"\x00\x00\x55\xAA"
+
+    fat = bytearray(S)
+    for i, v in enumerate((0x0FFFFFF8, 0x0FFFFFFF, 0x0FFFFFFF, 0x0FFFFFFF)):  # media, EOC, root, MAIN.TXT
+        struct.pack_into("<I", fat, i * 4, v)
+
+    root = bytearray(S)
+    root[0:11] = b"KDPFAT32   "
+    root[11] = 0x08
+    date = ((2026 - 1980) << 9) | (11 << 5) | 3
+    e = bytearray(32)
+    e[0:11] = b"MAIN    TXT"
+    e[11] = 0x20
+    struct.pack_into("<H", e, 18, date)
+    struct.pack_into("<HHHHI", e, 20, 0, 0, date, 3, len(TEXT))   # first cluster hi=0, lo=3
+    e[24:26] = struct.pack("<H", date)
+    e[26:28] = struct.pack("<H", 3)
+    root[32:64] = e
+
+    data = TEXT.ljust(S, b"\x00")
+    with open(path, "wb") as f:
+        f.truncate(TOTAL * S)
+        for n, blob in ((0, boot), (1, fsinfo), (6, boot), (7, fsinfo),
+                        (FAT_START, fat), (FAT_START + FATSZ, fat),
+                        (DATA_START, root), (DATA_START + 1, data)):
+            f.seek(sector(n))
+            f.write(blob)
+
+
+def read_back(path):
+    with open(path, "rb") as f:
+        boot = f.read(S)
+        (bps, spc, rsv, nfat) = struct.unpack_from("<HBHB", boot, 11)
+        fatsz, root_cl = struct.unpack_from("<I", boot, 36)[0], struct.unpack_from("<I", boot, 44)[0]
+        data_start = rsv + nfat * fatsz
+        f.seek(data_start * bps + (root_cl - 2) * bps * spc)
+        root = f.read(bps * spc)
+        for i in range(0, len(root), 32):
+            e = root[i:i + 32]
+            if e[0] in (0, 0xE5) or e[11] & 0x08:
+                continue
+            cl = (struct.unpack_from("<H", e, 20)[0] << 16) | struct.unpack_from("<H", e, 26)[0]
+            size = struct.unpack_from("<I", e, 28)[0]
+            f.seek((data_start + (cl - 2) * spc) * bps)
+            return e[0:8].decode().strip() + "." + e[8:11].decode().strip(), f.read(size)
+
+
+if __name__ == "__main__":
+    out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(tempfile.gettempdir(), "kdp-fat32.img")
+    build(out)
+    name, data = read_back(out)
+    print("--- %s (FAT32, %d clusters, label KDPFAT32) ---" % (out, CLUSTERS))
+    print("--- /%s (%d bytes) ---" % (name, len(data)))
+    print(data.decode("ascii").replace("\r\n", "\n"), end="")
