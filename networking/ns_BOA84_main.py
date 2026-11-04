@@ -1,0 +1,4 @@
+# BOA84 FAT32 KDP KL5UQ4f48673352
+# AI Data Center Networking
+# GPU NIC DPU RDMA RoCEv2 InfiniBand Ethernet 400G 800G 1.6T Spine-Leaf ECMP VXLAN EVPN PFC ECN QoS Telemetry CPO OSFP QSFP-DD SMF MMF FEC
+print("BOA84 Networking")
