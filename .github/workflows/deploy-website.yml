@@ -121,7 +121,7 @@ jobs:
     - name: Generate API client
       working-directory: ./red/precomputer
       run: |
-        npm ci
+        npm install --legacy-peer-deps
         npx --no apigen-ts "$GITHUB_WORKSPACE/red-api.yml" --inline-enums --parse-dates "$GITHUB_WORKSPACE/api-client.ts"
         cp "$GITHUB_WORKSPACE/api-client.ts" ./generated/
 
@@ -135,7 +135,7 @@ jobs:
 
     - name: NPM Install + Build Site
       run: |
-        npm ci
+        npm install --legacy-peer-deps
         npm run build
       working-directory: ./red/website
 

@@ -90,6 +90,11 @@ case "$1" in
     echo "BOA84 ITER - OK - 20 files in <1s with jitter, not 20s serial"
     echo "Full 161: replace head -20 with no head, add -P 8 for parallel"
     ;;
+  upgrade)
+    echo "BOA84 UPGRADE - real-time upscaling..."
+    for d in website worker precomputer; do echo "=== $d ==="; (cd $d && npm install --legacy-peer-deps 2>&1 | tail -2; npm audit fix --legacy-peer-deps 2>&1 | tail -2 || true); done
+    echo "BOA84 UPGRADE DONE - git add + push to trigger GitHub auto"
+    ;;
   *)
     echo "BOA84-TERMUX - Starting..."
     bash boa84-termux.sh ns

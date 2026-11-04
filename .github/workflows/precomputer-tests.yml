@@ -27,11 +27,11 @@ jobs:
           cache-dependency-path: "**/package-lock.json"
 
       - name: Install dependencies (website)
-        run: npm ci
+        run: npm install --legacy-peer-deps
         working-directory: ./website
 
       - name: Install dependencies (precomputer)
-        run: npm ci
+        run: npm install --legacy-peer-deps
         working-directory: ./precomputer
 
       - name: Run all other tests
