@@ -20,11 +20,6 @@ function precomputerMain(){ console.log("[precomputer] MAIN running"); return "p
 function websiteMain(){ console.log("[website] MAIN running"); return "website OK"; }
 function workerMain(){ console.log("[worker] MAIN running"); return "worker OK"; }
 function main(){
-  console.log("=== RUN ALL MAINS ===");
-  const r = [sMain(),aMain(),bMain(),cMain(),dMain(),precomputerMain(),websiteMain(),workerMain()];
-  console.log("=== ALL MAINS DONE ===", r);
-}
-function main(){
   console.log("=== RUN ALL MAINS - CANARY BUILD ===");
   if(!canaryMain()) return;
   const r = [sMain(),aMain(),bMain(),cMain(),dMain(),precomputerMain(),websiteMain(),workerMain()];
