@@ -101,6 +101,9 @@
   "overrides": {
     "openapi-typescript": {
       "typescript": "6.0.3"
-    }
+    },
+    "tinypool": ">=2.1.2",
+    "undici": ">=7.31.0",
+    "fflate": ">=0.7.5"
   }
 }
