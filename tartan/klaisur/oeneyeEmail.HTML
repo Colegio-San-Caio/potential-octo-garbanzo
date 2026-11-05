@@ -17,4 +17,4 @@ function saveDraft(){d.unshift({type:'draft',to:document.getElementById('to').va
 function sendMail(){let to=document.getElementById('to').value,subj=document.getElementById('subj').value,body=document.getElementById('body').value;d.unshift({type:'sent',to,subj});localStorage.setItem('oeneyeEmail',JSON.stringify(d));render();location.href=`mailto:${to}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;}
 render();
 </script>
-</body></html>
+

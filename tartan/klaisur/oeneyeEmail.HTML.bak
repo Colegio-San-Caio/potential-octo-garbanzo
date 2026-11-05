@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>oeneyeEmail</title></head>
+<body style="background:#fff;color:#000;font-family:sans-serif;padding:15px">
+<h1 style="text-align:center">oeneyeEmail - Make Email + Write</h1>
+<p><a href="oeneyeMOSFETQfont.HTML">← MOSFETQfont</a> | <a href="OneEYEMail.HTML">Full OneEYEMail →</a></p>
+<div style="border:1px solid #000;padding:15px">
+<label>To:</label><br><input id="to" type="email" placeholder="name@example.com" style="width:100%;padding:10px;margin:5px 0"><br>
+<label>Subject:</label><br><input id="subj" placeholder="Subject" style="width:100%;padding:10px;margin:5px 0"><br>
+<label>Write:</label><br><textarea id="body" rows="5" placeholder="Write your email here..." style="width:100%;padding:10px"></textarea><br><br>
+<button onclick="sendMail()" style="background:#000;color:#fff;padding:8px 14px">Send Email</button>
+<button onclick="saveDraft()" style="padding:8px 14px">Save Draft</button>
+<h3>Drafts / Sent:</h3><ul id="list"></ul>
+</div>
+<script>
+let d=JSON.parse(localStorage.getItem('oeneyeEmail')||'[]');
+function render(){document.getElementById('list').innerHTML=d.map(x=>`<li>${x.type} | To: ${x.to} | ${x.subj}</li>`).join('')||'<li>sent | To: name@name.com | -1 | ;</li>';}
+function saveDraft(){d.unshift({type:'draft',to:document.getElementById('to').value,subj:document.getElementById('subj').value});localStorage.setItem('oeneyeEmail',JSON.stringify(d));render();}
+function sendMail(){let to=document.getElementById('to').value,subj=document.getElementById('subj').value,body=document.getElementById('body').value;d.unshift({type:'sent',to,subj});localStorage.setItem('oeneyeEmail',JSON.stringify(d));render();location.href=`mailto:${to}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;}
+render();
+</script>
+</body></html>
