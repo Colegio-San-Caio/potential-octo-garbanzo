@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html><head><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>main_email - OENEYE</title></head>
+<title>OneEYEMail - OENEYE</title></head>
 <body style="background:#000;color:#fff;font-family:sans-serif;padding:20px">
-<h1>OENEYE - email</h1>
-<p><a href="../index.html" style="color:#0f0">← Back to Klausur Tartan</a></p>
-<p>Pattern: <b>email</b> &lt;input type="email"&gt;</p>
-<form>
-<label>email: </label>
-<input type="email" name="email" placeholder="Enter email">
-<button type="submit" style="background:#0f0">Test</button>
+<h1>👁️ OneEYEMail</h1>
+<p><a href="index.html" style="color:#0f0">← Back to Klausur Tartan</a> | <a href="oeneye/" style="color:#0f0">OENEYE Patterns</a></p>
+
+<h2>Live Test:</h2>
+<form onsubmit="document.getElementById('out').innerText='Sent to: '+document.getElementById('em').value;return false;">
+<label>Your Email: </label>
+<input id="em" type="email" placeholder="you@example.com" required style="padding:10px;width:80%">
+<br><br><button style="background:#0f0;padding:10px;font-size:18px">Send OneEYEMail</button>
 </form>
-<p>File: main_email.HTML / OENEYEemail.iQxD</p>
+<p id="out" style="color:#0f0"></p>
+
+<h2>Code - Copy This Box:</h2>
+<pre id="codebox" style="background:#111;color:#0f0;border:2px solid #0f0;padding:15px;white-space:pre-wrap;overflow:auto;font-size:14px">&lt;!-- OneEYEMail - OENEYE --&gt;
+&lt;form&gt;
+  &lt;label&gt;Your Email: &lt;/label&gt;
+  &lt;input type="email" name="OneEYEMail"
+         placeholder="you@example.com" required&gt;
+  &lt;button type="submit"&gt;Send OneEYEMail&lt;/button&gt;
+&lt;/form&gt;
+&lt;!-- Pattern: main_email.HTML / OENEYEemail.iQxD --&gt;</pre>
+
+<button onclick="navigator.clipboard.writeText(document.getElementById('codebox').innerText);this.innerText='Copied!'" style="background:#0ff;padding:10px">COPY CODE</button>
+
+<p style="color:#888">File: OneEYEMail.HTML - Pattern: email - OENEYEemail.iQxD</p>
 </body></html>
