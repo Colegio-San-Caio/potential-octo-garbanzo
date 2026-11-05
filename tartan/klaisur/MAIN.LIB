@@ -1,0 +1,23 @@
+# MAIN.LIB
+# by MAIN.LIB as trafo.com
+# respectively main energy's matrixing
+
+LIB = MAIN
+DOMAIN = trafo.com
+SOURCE = main.zudus
+SOURCE_LIB = zudus.lib
+
+# MAIN ENERGY MATRIX
+# rows = IN, cols = OUT
+# [ trafo, main, zudus ]
+MATRIX = [
+  [1, 0, 0],
+  [0, 1, 1],
+  [1, 1, 1]
+]
+
+# trafo.com maps:
+# main -> trafo -> zudus
+# energy IN = energy OUT
+TRAFO = main -> trafo.com -> zudus.lib
+
