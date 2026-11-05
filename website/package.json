@@ -61,7 +61,7 @@
     "micromark": "4.0.3",
     "micromark-extension-frontmatter": "2.0.0",
     "micromark-extension-gfm": "3.0.0",
-    "nitropack": "2.13.5",
+    "nitropack": "2.13.6",
     "nuxt": "4.6.3",
     "nuxt-vitalizer": "3.0.0",
     "oidc-client-ts": "3.5.0",
@@ -93,7 +93,7 @@
     "playwright-core": "1.64.1",
     "pngjs": "7.0.0",
     "typed-openapi": "4.1.0",
-    "vitest": "5.0.5",
+    "vitest": "5.1.0",
     "vue-tsc": "3.3.14"
   },
   "peerDependencies": {
