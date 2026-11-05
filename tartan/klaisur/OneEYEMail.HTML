@@ -1,3 +1,4 @@
+<!-- OMQpreview.ximg runtime - Copyright (c) kaiolafketelhut / index.html - Used by permission / only hosted there. Do not copy. Loaded via fetch from canonical repo. -->
 <!DOCTYPE html>
 <html><head><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OneEyeMail - MOSFETQ</title></head>
@@ -158,7 +159,7 @@ async function loadOMQRuntime(){
   var fallback = ["Hi.c","ornop","MOSFETQ","BLUH","EMAIL"];
   var names = fallback;
   try{
-    var r = await fetch("OMQpreview.ximg", {cache:"no-store"});
+    var r = await fetch("https://raw.githubusercontent.com/kaiolafketelhut/index.html/main/OMQpreview.ximg", {cache:"no-store"});
     if(r.ok){
       var txt = await r.text();
       // take any [NAME], NAME BOX, or bare lines like Hi.c / orop.qasm / MOSFETQ
