@@ -2,28 +2,42 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Klaisur Tartan</title>
+<title>Klaisur Tartan - jQuery + GraphQL</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body class="bg-black text-white min-h-screen">
   <div class="p-4">
     <h1 class="text-3xl font-bold">Klaisur Tartan</h1>
-    <p id="count" class="text-gray-400">Loading...</p>
+    <p id="count" class="text-gray-400">Loading via jQuery + GraphQL...</p>
+    <div class="flex gap-2 mt-3">
+      <button id="btn-rest" class="bg-white text-black px-3 py-1 rounded-lg text-sm">REST</button>
+      <button id="btn-gql" class="bg-blue-500 px-3 py-1 rounded-lg text-sm">GraphQL</button>
+    </div>
   </div>
   <div id="grid" class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4"></div>
 
 <script>
-fetch("http://localhost:8082/api/pics")
-  .then(r => r.json())
-  .then(d => {
-    document.getElementById("count").textContent = d.count + " pics - via REST API";
-    document.getElementById("grid").innerHTML = d.pics.map(p =>
-      `<img src="pics/${p}" class="w-full aspect-square object-cover rounded-xl shadow-lg">`
-    ).join("");
-  })
-  .catch(() => {
-    document.getElementById("count").textContent = "API not running - start python3 api.py";
+function show(pics, label){
+  $("#count").text(pics.length + " pics - via " + label);
+  $("#grid").html(pics.map(p =>
+    `<img src="pics/${p}" class="w-full aspect-square object-cover rounded-xl shadow-lg">`
+  ).join(""));
+}
+function loadRest(){
+  $.getJSON("http://localhost:8082/api/pics", d => show(d.pics, "REST + jQuery"));
+}
+function loadGql(){
+  $.ajax({
+    url: "http://localhost:8082/graphql",
+    method: "POST",
+    data: "{ pics { name } }",
+    success: d => show(d.data.pics, "GraphQL + jQuery")
   });
+}
+$("#btn-rest").click(loadRest);
+$("#btn-gql").click(loadGql);
+loadGql();
 </script>
 </body>
 </html>
