@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>main_tel - OENEYE</title></head>
+<body style="background:#000;color:#fff;font-family:sans-serif;padding:20px">
+<h1>OENEYE - tel</h1>
+<p><a href="../index.html" style="color:#0f0">← Back to Klausur Tartan</a></p>
+<p>Pattern: <b>tel</b> &lt;input type="tel"&gt;</p>
+<form>
+<label>tel: </label>
+<input type="tel" name="tel" placeholder="Enter tel">
+<button type="submit" style="background:#0f0">Test</button>
+</form>
+<p>File: main_tel.HTML / OENEYEtel.iQxD</p>
+</body></html>

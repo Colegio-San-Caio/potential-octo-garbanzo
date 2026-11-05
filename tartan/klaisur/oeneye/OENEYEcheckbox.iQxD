@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>main_checkbox - OENEYE</title></head>
+<body style="background:#000;color:#fff;font-family:sans-serif;padding:20px">
+<h1>OENEYE - checkbox</h1>
+<p><a href="../index.html" style="color:#0f0">← Back to Klausur Tartan</a></p>
+<p>Pattern: <b>checkbox</b> &lt;input type="checkbox"&gt;</p>
+<form>
+<label>checkbox: </label>
+<input type="checkbox" name="checkbox" placeholder="Enter checkbox">
+<button type="submit" style="background:#0f0">Test</button>
+</form>
+<p>File: main_checkbox.HTML / OENEYEcheckbox.iQxD</p>
+</body></html>

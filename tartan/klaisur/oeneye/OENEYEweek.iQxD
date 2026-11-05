@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>main_week - OENEYE</title></head>
+<body style="background:#000;color:#fff;font-family:sans-serif;padding:20px">
+<h1>OENEYE - week</h1>
+<p><a href="../index.html" style="color:#0f0">← Back to Klausur Tartan</a></p>
+<p>Pattern: <b>week</b> &lt;input type="week"&gt;</p>
+<form>
+<label>week: </label>
+<input type="week" name="week" placeholder="Enter week">
+<button type="submit" style="background:#0f0">Test</button>
+</form>
+<p>File: main_week.HTML / OENEYEweek.iQxD</p>
+</body></html>
