@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery Demo</title><script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script></head>
+<body class="bg-black text-white">
+<div class="p-4"><h1 class="text-3xl font-bold">jQuery + REST Demo</h1><p id="count" class="text-gray-400">Loading via jQuery...</p></div>
+<div id="grid" class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4"></div>
+<script>
+$.getJSON("http://localhost:8082/api/pics", d=>{
+  $("#count").text(d.count+" pics - via jQuery + REST");
+  $("#grid").html(d.pics.map(p=>`<img src="pics/${p}" class="w-full aspect-square object-cover rounded-xl shadow-lg">`).join(""));
+});
+</script>
+</body></html>

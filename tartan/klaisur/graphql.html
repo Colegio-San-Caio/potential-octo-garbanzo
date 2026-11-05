@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GraphQL Demo</title><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-black text-white">
+<div class="p-4"><h1 class="text-3xl font-bold">GraphQL Demo</h1><p id="count" class="text-gray-400">Loading via GraphQL...</p></div>
+<div id="grid" class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4"></div>
+<script>
+fetch("http://localhost:8082/graphql", {method:"POST", body:"{ pics { name } }"})
+.then(r=>r.json()).then(d=>{
+  let pics=d.data.pics;
+  document.getElementById("count").textContent=pics.length+" pics - via GraphQL";
+  document.getElementById("grid").innerHTML=pics.map(p=>`<img src="pics/${p}" class="w-full aspect-square object-cover rounded-xl shadow-lg">`).join("");
+});
+</script>
+</body></html>
