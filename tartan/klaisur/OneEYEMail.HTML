@@ -1,29 +1,76 @@
 <!DOCTYPE html>
 <html><head><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OneEYEMail - OENEYE</title></head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:20px">
-<h1>👁️ OneEYEMail</h1>
-<p><a href="index.html" style="color:#0f0">← Back to Klausur Tartan</a> | <a href="oeneye/" style="color:#0f0">OENEYE Patterns</a></p>
+<title>OneEyeMail - MOSFETQ</title></head>
+<body style="background:#fff;color:#000;font-family:sans-serif;padding:10px;margin:0">
+<div style="background:#000;color:#fff;padding:8px;display:flex;justify-content:space-between"><b>👁️ OneEyeMail</b><span>19:55:00</span></div>
 
-<h2>Live Test:</h2>
-<form onsubmit="document.getElementById('out').innerText='Sent to: '+document.getElementById('em').value;return false;">
-<label>Your Email: </label>
-<input id="em" type="email" placeholder="you@example.com" required style="padding:10px;width:80%">
-<br><br><button style="background:#0f0;padding:10px;font-size:18px">Send OneEYEMail</button>
-</form>
-<p id="out" style="color:#0f0"></p>
+<!-- FILE LIST BOX -->
+<div style="border:1px solid #000;margin:10px 0;padding:8px;font-size:13px">
+<div style="display:flex;justify-content:space-between;border-bottom:1px solid #ddd;padding:4px"><span>X: workshop.img - 1.4 MB</span><span>dl</span></div>
+<div style="display:flex;justify-content:space-between;border-bottom:1px solid #ddd;padding:4px"><span>fily.img - 360 KB</span><span>dl</span></div>
+<div style="display:flex;justify-content:space-between;padding:4px"><span>iframe.frame.html - Macro</span><span>open</span></div>
+<div style="background:#000;color:#0f0;padding:8px;margin-top:6px;font-family:monospace;font-size:12px;overflow:auto">qemu-system-i386 -fda oeneyeOS.img -fdb data.img -hda date.img -hdb G:\OeneyeALPINEunix.img</div>
+</div>
 
-<h2>Code - Copy This Box:</h2>
-<pre id="codebox" style="background:#111;color:#0f0;border:2px solid #0f0;padding:15px;white-space:pre-wrap;overflow:auto;font-size:14px">&lt;!-- OneEYEMail - OENEYE --&gt;
-&lt;form&gt;
-  &lt;label&gt;Your Email: &lt;/label&gt;
-  &lt;input type="email" name="OneEYEMail"
-         placeholder="you@example.com" required&gt;
-  &lt;button type="submit"&gt;Send OneEYEMail&lt;/button&gt;
-&lt;/form&gt;
-&lt;!-- Pattern: main_email.HTML / OENEYEemail.iQxD --&gt;</pre>
+<!-- QEMU CLONE BOX -->
+<div style="border:1px solid #000;margin:10px 0;padding:10px">
+<b>[QEMU-CLONE BOX] by book - tinyurl.com/qemu-clone - new</b><br>
+TinyURL: <a href="https://tinyurl.com/qemu-clone">https://tinyurl.com/qemu-clone</a> -- resolved to github.com/qemu/qemu<br>
+Local submodule: <code>.qemu-clone/</code> - 931011 objects, 698 MB - GitHub: <a href="https://github.com/kaiolafketelhut/qemu_clone">kaiolafketelhut/qemu_clone</a>
+<p><b>Clone:</b></p>
+<pre style="background:#eee;padding:8px">git clone https://github.com/qemu/qemu qemu_clone
+git submodule add https://github.com/qemu/qemu qemu-clone</pre>
+<p><b>Build (old mirror emu):</b></p>
+<pre style="background:#000;color:#0f0;padding:10px;font-size:12px;overflow:auto">cd qemu-clone
+./configure --target-list=i386-softmmu,x86_64-softmmu
+make -j$(nproc)
+/build/qemu-system-i386 -fda ../oeneyeOS.img -fdb ../data.img -hda ../date.img -hdb ../GNUoeneyeALPINEunix.img</pre>
+<b>Drives + BLUH.XKTS:</b> C:/mnt/c D:Fieldberry E:SIETEHR /drive/myDrive /emu/dos /bluh/xkts --grid 16,16 --block 16,16 --floppy-max 2.88MB
+</div>
 
-<button onclick="navigator.clipboard.writeText(document.getElementById('codebox').innerText);this.innerText='Copied!'" style="background:#0ff;padding:10px">COPY CODE</button>
+<!-- EMU DOS PY BOX -->
+<div style="border:1px solid #000;margin:10px 0;padding:10px">
+<b>[EMU_DOS_PY BOX] by book - py namespace</b><br>
+File: <code>emu_dos.py</code> - python3 emu_dos.py<br>
+<pre style="background:#eee;padding:8px">import oeneye.bluh.xkts as bluh; bluh.init(grid=(16,16), block=(16,16)).load("MOSFETQ").exec("TECHNOLOGIE ALS GESELLSCHAFTSTREIBER")</pre>
+<pre style="background:#000;color:#0f0;padding:10px;font-size:12px;overflow:auto">oec::.cu -&gt; python3 grid=16,16 block=16,16
+[BLUH.XKTS] init grid=(16,16) block=(16,16) by book
+[EMU_DOS] Mounting from old mirror
+qemu-system-i386 -fda oeneyeOS.img -fdb data.img -hda date.img -hdb G:\OeneyeALPINEunix.img</pre>
+Full source in repo: <a href="https://github.com/kaiolafketelhut/qemu_clone">/emu_dos.py</a>
+</div>
 
-<p style="color:#888">File: OneEYEMail.HTML - Pattern: email - OENEYEemail.iQxD</p>
+<!-- CLOCK BOX -->
+<div style="border:1px solid #000;margin:10px 0;padding:10px">
+<b>[CLOCK / CHECKSUM / KDP] by book</b><br>
+CLOCK_UTC: 2026-11-05T18:54:52.859Z<br>
+SHA256_INDEX: fe94a2adad6d08457eef0a027ee0efdbbf0873f308d043dfdc11c9c6fd8e45f<br>
+ISBN: 978-3-00-068463-0 - Order: 2026-0812-CNNN3-BK01 - NCAGE: CNNN3<br>
+KDP clean file: <a href="#">KDP_DESCRIPTION.html</a> - no body/div, only b/i/u/br/p/ul/li (fixes Amazon red error)
+</div>
+
+<!-- OneEyeMail FORM - THE MAIN ONE -->
+<div style="border:1px solid #000;margin:10px 0;padding:15px">
+<h2 style="text-align:center">OneEyeMail - Make Email + Write</h2>
+<label>To:</label><br>
+<input id="to" type="email" placeholder="name@example.com" style="width:100%;padding:10px;margin:5px 0;border:1px solid #999"><br>
+<label>Subject:</label><br>
+<input id="subj" placeholder="Subject" style="width:100%;padding:10px;margin:5px 0;border:1px solid #999"><br>
+<label>Write:</label><br>
+<textarea id="body" rows="6" placeholder="Write your email here..." style="width:100%;padding:10px;border:1px solid #999"></textarea><br><br>
+<button onclick="sendMail()" style="background:#000;color:#fff;padding:8px 14px;border:none">Send Email</button>
+<button onclick="saveDraft()" style="background:#fff;padding:8px 14px;border:1px solid #999">Save Draft</button>
+<h3>Drafts / Sent:</h3>
+<ul id="list"><li>sent | To: name@name.com | -1 | ;</li></ul>
+</div>
+
+<script>
+let drafts=JSON.parse(localStorage.getItem('oneeyemail')||'[]');
+function render(){let l=document.getElementById('list');l.innerHTML='<li>sent | To: name@name.com | -1 | ;</li>'+drafts.map(d=>`<li>${d.type} | To: ${d.to} | ${d.subj} | ${d.body.substring(0,40)}</li>`).join('');}
+function saveDraft(){let d={type:'draft',to:document.getElementById('to').value,subj:document.getElementById('subj').value,body:document.getElementById('body').value};drafts.unshift(d);localStorage.setItem('oneeyemail',JSON.stringify(drafts));render();alert('Draft saved');}
+function sendMail(){let to=document.getElementById('to').value,subj=document.getElementById('subj').value,body=document.getElementById('body').value;let d={type:'sent',to,subj,body};drafts.unshift(d);localStorage.setItem('oneeyemail',JSON.stringify(drafts));render();window.location.href=`mailto:${to}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;}
+render();
+</script>
+
+<p><a href="index.html" style="color:#0f0">← Back to Klausur</a> | <a href="oeneye/">OENEYE Patterns</a> | <a href="maker/mosfetqWebPageMaker.HTML">mosfetqWebPageMaker</a></p>
 </body></html>
