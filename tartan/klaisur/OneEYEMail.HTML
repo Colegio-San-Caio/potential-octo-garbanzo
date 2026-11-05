@@ -62,7 +62,48 @@ KDP clean file: <a href="#">KDP_DESCRIPTION.html</a> - no body/div, only b/i/u/b
 <input id="to" type="email" value="oeneyeos@gmail.com" placeholder="oeneyeos@gmail.com" style="width:100%;padding:10px;margin:5px 0;border:1px solid #999"><br>
 <label>Subject:</label><br>
 <input id="subj" placeholder="Subject" style="width:100%;padding:10px;margin:5px 0;border:1px solid #999"><br>
-<label>Write:</label><br>
+<label>
+<div id="writeToolbar" style="display:flex;gap:6px;flex-wrap:wrap;margin:6px 0">
+  <select id="styleSelect">
+    <option value="">Text Style...</option>
+    <option value="b">Bold &lt;b&gt;</option>
+    <option value="i">Italic &lt;i&gt;</option>
+    <option value="u">Underline &lt;u&gt;</option>
+    <option value="code">Code &lt;code&gt;</option>
+    <option value="pre">Code Box &lt;pre&gt;</option>
+    <option value="h2">Heading H2</option>
+    <option value="p">Paragraph &lt;p&gt;</option>
+  </select>
+  <select id="patternSelect">
+    <option value="">Pattern...</option>
+    <option value="Hi.c">Hi.c - OENEYE</option>
+    <option value="ornop">ornop.qasm</option>
+    <option value="MOSFETQ">MOSFETQ</option>
+    <option value="BLUH">BLUH.XKTS</option>
+    <option value="EMAIL">Email -1 / ;</option>
+  </select>
+  <button type="button" onclick="applyStyle()">Apply Style</button>
+  <button type="button" onclick="insertCodeBox()">+ Code Box</button>
+</div>
+<script>
+function getWrite(){ return document.querySelector('textarea[placeholder*="Write"], textarea[name="body"], #write, textarea'); }
+function applyStyle(){
+  var ta=getWrite(); if(!ta) return;
+  var s=document.getElementById('styleSelect').value; if(!s) return;
+  var a=ta.selectionStart, b=ta.selectionEnd, sel=ta.value.slice(a,b)||"text";
+  var wrap={"b":["<b>","</b>"],"i":["<i>","</i>"],"u":["<u>","</u>"],"code":["<code>","</code>"],"pre":["<pre>\n","\n</pre>"],"h2":["<h2>","</h2>"],"p":["<p>","</p>"]}[s];
+  ta.value=ta.value.slice(0,a)+wrap[0]+sel+wrap[1]+ta.value.slice(b); ta.focus();
+}
+function insertCodeBox(){
+  var ta=getWrite(); if(!ta) return;
+  var pat=document.getElementById('patternSelect').value||"Hi.c";
+  var box="\n<pre>\n["+pat+" BOX] by book\n// "+pat+" - OENEYE\n// gcc "+pat+" -o "+pat+" && ./"+pat+"\n</pre>\n";
+  var a=ta.selectionStart; ta.value=ta.value.slice(0,a)+box+ta.value.slice(a); ta.focus();
+}
+document.getElementById('patternSelect').addEventListener('change', function(){ if(this.value) insertCodeBox(); });
+</script>
+
+Write:</label><br>
 <textarea id="body" rows="6" placeholder="Write your email here..." style="width:100%;padding:10px;border:1px solid #999"></textarea><br><br>
 <button onclick="sendMail()" style="background:#000;color:#fff;padding:8px 14px;border:none">Send Email</button>
 <button onclick="saveDraft()" style="background:#fff;padding:8px 14px;border:1px solid #999">Save Draft</button>
