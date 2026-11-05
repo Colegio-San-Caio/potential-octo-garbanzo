@@ -151,6 +151,38 @@ measure q;</pre>
 # ;</pre>
 <p>From email: From oeneyeos@gmail.com - Subject: -1 - Body: ; - To: oeneyeos@gmail.com (not mail@github.io - that one has no mail server)</p>
 </div>
+
+<script>
+// OMQpreview.ximg = runtime for Write + BLUH dropdowns
+async function loadOMQRuntime(){
+  var fallback = ["Hi.c","ornop","MOSFETQ","BLUH","EMAIL"];
+  var names = fallback;
+  try{
+    var r = await fetch("OMQpreview.ximg", {cache:"no-store"});
+    if(r.ok){
+      var txt = await r.text();
+      // take any [NAME], NAME BOX, or bare lines like Hi.c / orop.qasm / MOSFETQ
+      var found = [];
+      for(var m of txt.matchAll(/\[([A-Za-z0-9._-]+)(?:\s+BOX)?\]/g)) found.push(m[1]);
+      for(var line of txt.split(/\r?\n/)){
+        line=line.trim();
+        if(/^(Hi\.c|ornop|MOSFETQ|BLUH|EMAIL|OENEYE)/i.test(line)) found.push(line.split(/\s/)[0]);
+      }
+      // dedupe, keep order
+      var seen={}; names = found.filter(x=>!seen[x] && (seen[x]=1));
+      if(!names.length) names = fallback;
+      window.OMQ_RUNTIME = txt; // BLUH + Write can read full text
+      console.log("OMQ runtime loaded:", names);
+    }
+  }catch(e){ console.log("OMQ runtime fallback", e); }
+  for(var id of ["patternSelect","bluhPatternSelect"]){
+    var sel=document.getElementById(id); if(!sel) continue;
+    sel.innerHTML='<option value="">Pattern... (from OMQpreview.ximg)</option>' + names.map(n=>'<option value="'+n+'">'+n+'</option>').join('');
+  }
+}
+document.addEventListener("DOMContentLoaded", loadOMQRuntime);
+</script>
+
 </body></html>
 <div id="bluhToolbar" style="display:flex;gap:6px;flex-wrap:wrap;margin:6px 0">
   <select id="bluhStyleSelect">
