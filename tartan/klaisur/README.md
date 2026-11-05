@@ -1,41 +1,11 @@
-# Klaisur Tartans — Auto Gallery
+# Klausur Tartan
 
-## IMG-20261105-WA0020.jpg
-![IMG-20261105-WA0020.jpg](pics/IMG-20261105-WA0020.jpg)
+Live: https://colegio-san-caio.github.io/potential-octo-garbanzo/tartan/klaisur/
 
-## IMG-20261105-WA0021.jpg
-![IMG-20261105-WA0021.jpg](pics/IMG-20261105-WA0021.jpg)
+- [Klausur Tartan - index.html](index.html)
+- [TRAFO.COM - trafo.html](trafo.html)
+- [MAIN ENERGY - main-energy.html](main-energy.html)
+- [POSTERS - posters/](posters/)
+- [MAIN.LIB](MAIN.LIB)
 
-## IMG-20261105-WA0022.jpg
-![IMG-20261105-WA0022.jpg](pics/IMG-20261105-WA0022.jpg)
-
-## IMG-20261105-WA0023.jpg
-![IMG-20261105-WA0023.jpg](pics/IMG-20261105-WA0023.jpg)
-
-## IMG-20261105-WA0024.jpg
-![IMG-20261105-WA0024.jpg](pics/IMG-20261105-WA0024.jpg)
-
-## IMG-20261105-WA0026.jpg
-![IMG-20261105-WA0026.jpg](pics/IMG-20261105-WA0026.jpg)
-
-## IMG-20261105-WA0027.jpg
-![IMG-20261105-WA0027.jpg](pics/IMG-20261105-WA0027.jpg)
-
-## IMG-20261105-WA0028.jpg
-![IMG-20261105-WA0028.jpg](pics/IMG-20261105-WA0028.jpg)
-
-## IMG-20261105-WA0029.jpg
-![IMG-20261105-WA0029.jpg](pics/IMG-20261105-WA0029.jpg)
-
-## IMG-20261105-WA0030.jpg
-![IMG-20261105-WA0030.jpg](pics/IMG-20261105-WA0030.jpg)
-
-## IMG-20261105-WA0031.jpg
-![IMG-20261105-WA0031.jpg](pics/IMG-20261105-WA0031.jpg)
-
-## Setts
-Main: `K36 G6 W2 G6 K12 B18 K4 R8 K4 B18 K12 GR10 G24 GR10 K12 B18 K4 R8 K4 B18 K12 G6 W2 G6 K36`
-
-Dress v2: `W28 G24 W6 G6 K6 B12 R4 B12 K6 GR6 G36 GR6 K6 B12 R4 B12 K6 G6 W6 G24 W28`
-
-Hunting v2: `K36 GR24 K8 GR12 G8 W2 G8 K12 B14 R6 B14 K12 GR10 K24 GR10 K12 B14 R6 B14 K12 G8 W2 G8 GR12 K8 GR24 K36`
+Code kept as is. Auto-pushed from Termux.
