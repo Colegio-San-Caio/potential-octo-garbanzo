@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html><head><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>main_file - OENEYE</title></head>
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>main_file - OENEYE</title></head>
 <body style="background:#000;color:#fff;font-family:sans-serif;padding:20px">
-<h1>OENEYE - file</h1>
-<p><a href="../index.html" style="color:#0f0">← Back to Klausur Tartan</a></p>
-<p>Pattern: <b>file</b> &lt;input type="file"&gt;</p>
-<form>
-<label>file: </label>
-<input type="file" name="file" placeholder="Enter file">
-<button type="submit" style="background:#0f0">Test</button>
-</form>
-<p>File: main_file.HTML / OENEYEfile.iQxD</p>
+<h1>OENEYE - file</h1><p><a href="../index.html" style="color:#0f0">← Back</a> | <a href="index.html" style="color:#0f0">All Patterns</a></p>
+<form><input type="file"> <span>No file chosen</span><br><br><button style="background:#0f0">Test</button></form>
 </body></html>
