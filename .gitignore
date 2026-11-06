@@ -20,3 +20,13 @@ data.img
 date.img
 oeneyeOS.img
 GNUoeneyeALPINEUnix.img
+
+# build outputs of the KDP mains
+*.tab.c
+*.yy.c
+*.o
+*.dmg
+__pycache__/
+kdp_lex
+kdp_yacc
+kdp_xdr

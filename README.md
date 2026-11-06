@@ -96,3 +96,15 @@ In `/precomputer/` run `npm run test`.
 ### During local dev website doesn't update with changes
 
 Stop the dev server, run `npm run cleanup`, and restart the dev server
+
+## KDP profile mains (Lex, Yacc, RPC, file systems)
+
+Each one prints the same four lines: nickname, code, role, points.
+
+| Where | What | Build / run |
+|---|---|---|
+| `lex/main.l` | Lex (flex) scanner | `flex -o main.yy.c lex/main.l && cc -o kdp_lex main.yy.c && ./kdp_lex` |
+| `yacc/main.y` | Yacc (bison) grammar | `cd yacc && bison -o main.tab.c main.y && cc -I. -o kdp_yacc main.tab.c && ./kdp_yacc` |
+| `rpc/main.x` | rpcgen interface | `cd rpc && rpcgen -h main.x -o main.h && rpcgen -c main.x -o main_xdr.c && gcc -I/usr/include/tirpc kdp_main.c main_xdr.c -ltirpc -o kdp_xdr && ./kdp_xdr` |
+| `fs/main.ext4`, `fs/main.fat32` | real ext4 and FAT32 images | `sh fs/main.ext4`, `python3 fs/main.fat32` |
+| `fs/main.exfat`, `main.ntfs`, `main.hfsplus`, `main.apfs`, `main.smb`, `main.nfs` | need extra tools or macOS, or are config files | see the comment at the top of each file |
