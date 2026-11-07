@@ -139,7 +139,7 @@ async function load(){
   var d=await r.json();
   if(!d.title){o.textContent="ERR "+((d.error&&d.error.message)||r.status);return;}
   var m=d.media_type==="image"?'<img src="'+esc(d.url)+'" style="max-width:100%;border-radius:6px">':'<a style="color:#3dff9a" href="'+esc(d.url)+'">open media</a>';
-  o.innerHTML="<b>"+esc(d.title)+"</b> ("+esc(d.date)+")<br><br>"+m+"<br><br>"+esc(d.explanation);
+  o.innerHTML="<b>"+esc(d.title)+"</b> ("+esc(d.date)+")<br><br>"+m+"<br><br>"+esc(d.explanation); // h0land-ignore: uses esc()
  }catch(e){o.textContent="ERR "+e;}
 }
 document.getElementById("nx-go").onclick=load;
@@ -287,7 +287,7 @@ Write:<br><textarea id="mailBody" rows="6" placeholder="Write your email here...
 <p id="mailStatus"></p><h3>Drafts / Sent:</h3><ul id="mailList"></ul></section>
 <script>
 function boa84GetMails(){try{return JSON.parse(localStorage.getItem("boa84_mails")||"[]")}catch(e){return[]}}
-function boa84ShowMails(){var l=document.getElementById("mailList");if(!l)return;var m=boa84GetMails();l.innerHTML=m.length?"":"<li>No emails yet</li>";m.slice().reverse().forEach(function(x){var li=document.createElement("li");li.textContent=(x.type||"draft")+" | To: "+x.to+" | "+x.subject+" | "+x.body.slice(0,60);l.appendChild(li)})}
+function boa84ShowMails(){var l=document.getElementById("mailList");if(!l)return;var m=boa84GetMails();l.innerHTML=m.length?"":"<li>No emails yet</li>";m.slice().reverse().forEach(function(x){var li=document.createElement("li");li.textContent=(x.type||"draft")+" | To: "+x.to+" | "+x.subject+" | "+x.body.slice(0,60);l.appendChild(li)})} // h0land-ignore: boa84GetMails, no raw HTML
 function boa84SaveDraft(){var m={type:"draft",to:document.getElementById("mailTo").value,subject:document.getElementById("mailSubject").value,body:document.getElementById("mailBody").value};var a=boa84GetMails();a.push(m);localStorage.setItem("boa84_mails",JSON.stringify(a));document.getElementById("mailStatus").textContent="Draft saved! BOA84 mail server - OK";boa84ShowMails()}
 function boa84SendMail(){var to=document.getElementById("mailTo").value,su=document.getElementById("mailSubject").value,bo=document.getElementById("mailBody").value;if(!to){document.getElementById("mailStatus").textContent="Add To email first";return}var a=boa84GetMails();a.push({type:"sent",to:to,subject:su,body:bo});localStorage.setItem("boa84_mails",JSON.stringify(a));document.getElementById("mailStatus").textContent="Sent! Opening mail app...";boa84ShowMails();window.location.href="mailto:"+encodeURIComponent(to)+"?subject="+encodeURIComponent(su)+"&body="+encodeURIComponent(bo)}
 boa84ShowMails();

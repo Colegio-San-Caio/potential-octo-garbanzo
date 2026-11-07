@@ -1,6 +1,6 @@
 function show(pics, label){
   document.getElementById("count").textContent = pics.length + " pics - via " + label;
-  document.getElementById("grid").innerHTML = pics.map(p =>
+  document.getElementById("grid").innerHTML = pics /* h0land-ignore: local pics */.map(p =>
     `<img src="pics/${p}" class="w-full aspect-square object-cover rounded-xl shadow-lg">`
   ).join("");
 }

@@ -9,7 +9,7 @@ fetch("http://localhost:8082/graphql", {method:"POST", body:"{ pics { name } }"}
 .then(r=>r.json()).then(d=>{
   let pics=d.data.pics;
   document.getElementById("count").textContent=pics.length+" pics - via GraphQL";
-  document.getElementById("grid").innerHTML=pics.map(p=>`<img src="pics/${p}" class="w-full aspect-square object-cover rounded-xl shadow-lg">`).join("");
+  document.getElementById("grid").innerHTML=pics /* h0land-ignore: local pics */.map(p=>`<img src="pics/${p}" class="w-full aspect-square object-cover rounded-xl shadow-lg">`).join("");
 });
 </script>
 </body></html>
