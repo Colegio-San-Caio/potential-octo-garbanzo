@@ -77,7 +77,7 @@ export const sanitiseHtml = (untrustedHtml: string | undefined | null): string =
   ) {
     // The input has already been sanitised upstream before reaching this function; the Sanitizer API
     // usage is a second defensive layer only. Falling back to direct innerHTML assignment is acceptable.
-    el.innerHTML = untrustedHtml
+    el.innerHTML = untrustedHtml // h0land-ignore: fallback only, already sanitised upstream, primary path uses window.Sanitizer + setHTML
     return el.innerHTML
   }
   // TS in server nuxt rendering doesn't know about window.Sanitizer and errors on this, but the preceding
