@@ -20,8 +20,8 @@
     "format": "oxfmt --ignore-path=.oxfmtignore ."
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1163.0",
-    "@aws-sdk/core": "3.980.0",
+    "@aws-sdk/client-s3": "3.1164.0",
+    "@aws-sdk/core": "3.980.1",
     "@napi-rs/canvas": "1.1.0",
     "@supercharge/promise-pool": "3.3.0",
     "@types/luxon": "3.7.6",
