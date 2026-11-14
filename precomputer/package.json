@@ -20,7 +20,7 @@
     "format": "oxfmt --ignore-path=.oxfmtignore ."
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1166.0",
+    "@aws-sdk/client-s3": "3.1167.0",
     "@aws-sdk/core": "3.981.0",
     "@napi-rs/canvas": "1.1.0",
     "@supercharge/promise-pool": "3.3.0",
@@ -34,7 +34,7 @@
     "micromark": "4.0.3",
     "micromark-extension-frontmatter": "2.0.0",
     "micromark-extension-gfm": "3.0.0",
-    "sanitize-html": "2.18.1",
+    "sanitize-html": "2.18.2",
     "satori": "0.63.2",
     "satori-html": "0.3.2",
     "sharp": "0.35.5",
