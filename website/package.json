@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@internationalized/date": "3.12.4",
-    "@opentelemetry/auto-instrumentations-web": "0.70.0",
+    "@opentelemetry/auto-instrumentations-web": "0.70.1",
     "@opentelemetry/context-zone": "3.1.1",
     "@opentelemetry/exporter-trace-otlp-proto": "0.301.2",
     "@opentelemetry/instrumentation": "0.301.2",
