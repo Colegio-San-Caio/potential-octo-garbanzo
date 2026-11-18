@@ -81,7 +81,7 @@
     "@nuxt/test-utils": "4.4.0",
     "@types/luxon": "3.7.6",
     "@types/pngjs": "6.0.5",
-    "@vue/test-utils": "2.5.1",
+    "@vue/test-utils": "2.6.0",
     "fast-xml-parser": "5.12.1",
     "happy-dom": "21.0.4",
     "openapi-typescript": "7.13.0",
