@@ -20,7 +20,7 @@
     "format": "oxfmt --ignore-path=.oxfmtignore ."
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1169.0",
+    "@aws-sdk/client-s3": "3.1170.0",
     "@aws-sdk/core": "3.981.0",
     "@napi-rs/canvas": "1.1.1",
     "@supercharge/promise-pool": "3.3.0",
@@ -50,7 +50,7 @@
     "@types/node": "26.6.6",
     "@types/sanitize-html": "2.16.2",
     "fastify": "5.12.8",
-    "oxfmt": "0.78.0",
+    "oxfmt": "0.79.0",
     "typescript": "7.0.2",
     "vitest": "5.1.0"
   }
