@@ -70,8 +70,8 @@
     "postcss-nested-import": "1.3.0",
     "reka-ui": "2.11.0",
     "simple-git": "4.1.0",
-    "survey-core": "3.2.6",
-    "survey-vue3-ui": "3.2.6",
+    "survey-core": "3.2.7",
+    "survey-vue3-ui": "3.2.7",
     "tailwindcss": "4.3.5",
     "vue": "3.5.45",
     "zod": "4.6.7"
@@ -93,7 +93,7 @@
     "playwright-core": "1.65.1",
     "pngjs": "7.0.0",
     "typed-openapi": "4.1.0",
-    "vitest": "5.1.0",
+    "vitest": "5.1.1",
     "vue-tsc": "3.3.14"
   },
   "peerDependencies": {
