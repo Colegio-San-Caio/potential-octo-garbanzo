@@ -4,10 +4,10 @@
          xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
          IgnorableNamespaces="uap rescap">
   <!-- Name and Publisher must be copied from Partner Center (Product identity) before you upload -->
-  <Identity Name="KaiOlafKetelhut.oeneye" Publisher="CN=88544420-228E-4D31-8839-1D4CADF99C43" Version="1.0.0.0" ProcessorArchitecture="x64" />
+  <Identity Name="REPLACE.Package.Name" Publisher="CN=REPLACE-PUBLISHER-ID" Version="1.0.0.0" ProcessorArchitecture="x64" />
   <Properties>
     <DisplayName>KDP Profile Suite</DisplayName>
-    <PublisherDisplayName>Kai Olaf Ketelhut</PublisherDisplayName>
+    <PublisherDisplayName>Kai Ketelhut</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
