@@ -1,0 +1,67 @@
+Field,ID,Type,default,fr,en-us
+Title,,Text,,oeneye,oeneye
+Description,,Text,,"oeneye est un compilateur pour le langage D, entièrement conçu pour les clients. Écrivez du code D, compilez-le en un exécutable Windows et exécutez-le directement depuis l'application. Idéal pour apprendre D, tester des exemples et créer de petits outils.","oeneye is a compiler for the D language, built fully for customers. Write D code, compile it into a Windows executable, and run it directly from the app. Perfect for learning D, testing examples, and building small tools."
+ShortDescription,,Text,,"Compilateur pour le langage D. Écrivez, compilez et exécutez du code D sur Windows.","Compiler for the D language. Write, compile, and run D code on Windows."
+ReleaseNotes,,Text,,Version 1.0.0.0 - Version initiale.,Version 1.0.0.0 - Initial release.
+CopyrightTrademarkInformation,,Text,,Copyright © Kai Olaf Ketelhut,Copyright © Kai Olaf Ketelhut
+Feature1,,Text,,Compile du code D en exécutables Windows,Compiles D code into Windows executables
+Feature2,,Text,,Éditeur simple pour écrire et tester du code D,Simple editor to write and test D code
+Feature3,,Text,,Exemples intégrés pour débuter rapidement,Built-in examples to get started quickly
+SearchTerm1,,Text,,D,D
+SearchTerm2,,Text,,compilateur D,D compiler
+SearchTerm3,,Text,,langage D,D language
+SearchTerm4,,Text,,programmation,programming
+SearchTerm5,,Text,,oeneye,oeneye
+Feature4,,Text,,,
+Feature5,,Text,,,
+Feature6,,Text,,,
+Feature7,,Text,,,
+Feature8,,Text,,,
+Feature9,,Text,,,
+Feature10,,Text,,,
+Feature11,,Text,,,
+Feature12,,Text,,,
+Feature13,,Text,,,
+Feature14,,Text,,,
+Feature15,,Text,,,
+Feature16,,Text,,,
+Feature17,,Text,,,
+Feature18,,Text,,,
+Feature19,,Text,,,
+Feature20,,Text,,,
+SearchTerm6,,Text,,,
+SearchTerm7,,Text,,,
+Screenshot1,,Relative path (or URL to file in Partner Center),,,
+Screenshot2,,Relative path (or URL to file in Partner Center),,,
+Screenshot3,,Relative path (or URL to file in Partner Center),,,
+Screenshot4,,Relative path (or URL to file in Partner Center),,,
+Screenshot5,,Relative path (or URL to file in Partner Center),,,
+Screenshot6,,Relative path (or URL to file in Partner Center),,,
+Screenshot7,,Relative path (or URL to file in Partner Center),,,
+Screenshot8,,Relative path (or URL to file in Partner Center),,,
+Screenshot9,,Relative path (or URL to file in Partner Center),,,
+Screenshot10,,Relative path (or URL to file in Partner Center),,,
+StoreLogo1,,Relative path (or URL to file in Partner Center),,,
+StoreLogo2,,Relative path (or URL to file in Partner Center),,,
+MinimumRequirement1,,Text,,,
+RecommendedRequirement1,,Text,,,
+MinimumRequirement2,,Text,,,
+RecommendedRequirement2,,Text,,,
+MinimumRequirement3,,Text,,,
+RecommendedRequirement3,,Text,,,
+MinimumRequirement4,,Text,,,
+RecommendedRequirement4,,Text,,,
+MinimumRequirement5,,Text,,,
+RecommendedRequirement5,,Text,,,
+MinimumRequirement6,,Text,,,
+RecommendedRequirement6,,Text,,,
+MinimumRequirement7,,Text,,,
+RecommendedRequirement7,,Text,,,
+MinimumRequirement8,,Text,,,
+RecommendedRequirement8,,Text,,,
+MinimumRequirement9,,Text,,,
+RecommendedRequirement9,,Text,,,
+MinimumRequirement10,,Text,,,
+RecommendedRequirement10,,Text,,,
+MinimumRequirement11,,Text,,,
+RecommendedRequirement11,,Text,,,
