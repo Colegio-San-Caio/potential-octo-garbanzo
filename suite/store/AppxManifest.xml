@@ -4,10 +4,10 @@
          xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
          IgnorableNamespaces="uap rescap">
   <!-- Name and Publisher must be copied from Partner Center (Product identity) before you upload -->
-  <Identity Name="KaiOlafKetelhut.oeneye" Publisher="CN=88544420-228E-4D31-8839-1D4CADF99C43" Version="1.0.0.0" ProcessorArchitecture="x64" />
+  <Identity Name="REPLACE.Package.Name" Publisher="CN=REPLACE-PUBLISHER-ID" Version="1.0.0.0" ProcessorArchitecture="x64" />
   <Properties>
-    <DisplayName>oeneye</DisplayName>
-    <PublisherDisplayName>Kai Olaf Ketelhut</PublisherDisplayName>
+    <DisplayName>KDP Profile Suite</DisplayName>
+    <PublisherDisplayName>Kai Ketelhut</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -18,7 +18,7 @@
   </Resources>
   <Applications>
     <Application Id="KdpSuite" Executable="KdpSuite.exe" EntryPoint="Windows.FullTrustApplication">
-      <uap:VisualElements DisplayName="oeneye" Description="Shows the KDP profile and the sample mains."
+      <uap:VisualElements DisplayName="KDP Profile Suite" Description="Shows the KDP profile and the sample mains."
           BackgroundColor="#141820" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
       </uap:VisualElements>

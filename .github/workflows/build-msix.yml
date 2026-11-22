@@ -12,15 +12,15 @@ jobs:
         shell: bash
         run: |
           mkdir -p layout/Assets
-          gcc -mwindows -o layout/oeneye.exe suite/store/app.c
+          gcc -mwindows -o layout/KdpSuite.exe suite/store/app.c
           python suite/store/make_assets.py layout/Assets
           cp suite/store/AppxManifest.xml layout/
       - name: Pack the MSIX
         shell: pwsh
         run: |
           $mk = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin\*\x64\makeappx.exe" | Sort-Object FullName | Select-Object -Last 1
-          & $mk.FullName pack /d layout /p oeneye.msix /o
+          & $mk.FullName pack /d layout /p KdpSuite.msix /o
       - uses: actions/upload-artifact@v4
         with:
-          name: oeneye-msix
-          path: oeneye.msix
+          name: KdpSuite-msix
+          path: KdpSuite.msix
