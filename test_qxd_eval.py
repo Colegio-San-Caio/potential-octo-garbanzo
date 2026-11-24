@@ -54,5 +54,10 @@ class TestQxdEval(unittest.TestCase):
         self.assertEqual(final.value, "0")
         self.assertTrue(final.locked)
 
+    def test_locked_ignore_fixture(self):
+        final = run_file(Path(__file__).resolve().parent / "sandbox" / "locked_ignore.qxd", trace=False)
+        self.assertEqual(final.value, "0")
+        self.assertTrue(final.locked)
+
 if __name__ == "__main__":
     unittest.main()
