@@ -1,4 +1,5 @@
 # QxD Layer L3 Workspace (`~/qxd-l3`)
+
 ## Context & Rules
 - Project: QxD (QxD Node Grammar) Layer L3 state evaluation for `oeneyeOS`.
 - Core grammar: Ternary phi-Trit values (`-`, `0`, `+`), `0;` fixpoint lock operator, and `S[...]S` state assertions (ignored when locked or invalid).
