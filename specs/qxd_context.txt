@@ -1,0 +1,6 @@
+QxD Context Specification
+Package Name: KaiOlafKetelhut.QxD
+Package Family Name: KaiOlafKetelhut.QxD_qj63ffjeq4c9p
+Publisher: CN=88544420-228E-4D31-8839-1D4CADF99C43
+DisplayName: QxD
+Entrypoint Wrapper: qxd_eval.exe (invoking qxd_eval.py with sandbox/*.qxd, specs/*, and assets/*)

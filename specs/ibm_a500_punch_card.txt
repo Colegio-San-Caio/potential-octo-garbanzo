@@ -1,0 +1,5 @@
+IBM A 500 Punch Card Specification Asset
+Context: QxD Layer L3 Evaluator / oeneyeOS transition notes
+Notes: Add column layout, encoding rules, and punch-to-state mapping details here.
+Context: QxD core evaluation pipeline and packaging specification
+QxD Identity: Name="KaiOlafKetelhut.QxD", Publisher="CN=88544420-228E-4D31-8839-1D4CADF99C43", DisplayName="QxD"
