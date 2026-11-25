@@ -23,28 +23,28 @@ def build_qxd_msix(output_path="qxd.msix"):
          xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
          xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
          IgnorableNamespaces="uap rescap">
-  <Identity Name="KaiOlafKetelhut.QxDEvaluator" Publisher="CN=88544420-228E-4D31-8839-1D4CADF99C43" Version="1.0.0.0" ProcessorArchitecture="x64" />
+  <Identity Name="KaiOlafKetelhut.QxD" Publisher="CN=AB544420-238E-4D81-8809-1D4CADF99C43" Version="1.0.0.0" ProcessorArchitecture="x64" />
   <Properties>
     <DisplayName>QxD Layer L3 Evaluator</DisplayName>
     <PublisherDisplayName>Kai Olaf Ketelhut</PublisherDisplayName>
     <Logo>Assets\\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
-    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0" />
+    <TargetDeviceFamily Name="KaiOlafKetelhut.QxD" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0" />
   </Dependencies>
   <Resources>
     <Resource Language="en-us" />
   </Resources>
   <Applications>
     <Application Id="QxDEvaluator" Executable="qxd_eval.py" EntryPoint="Windows.FullTrustApplication">
-      <uap:VisualElements DisplayName="QxD Evaluator" Description="QxD Layer L3 state evaluation engine for oeneyeOS"
+      <uap:VisualElements DisplayName="KaiOlafKetelhut.QxD" Description="QxD Layer L3 state evaluation engine for oeneyeOS"
           BackgroundColor="#141820" Square150x150Logo="Assets\\Square150x150Logo.png" Square44x44Logo="Assets\\Square44x44Logo.png">
         <uap:DefaultTile Wide310x150Logo="Assets\\Wide310x150Logo.png" />
       </uap:VisualElements>
     </Application>
   </Applications>
   <Capabilities>
-    <rescap:Capability Name="runFullTrust" />
+    <rescap:Capability Name="KaiOlafKetelhut.QxD" />
   </Capabilities>
 </Package>
 """
