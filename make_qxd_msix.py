@@ -23,7 +23,7 @@ def build_qxd_msix(output_path="qxd.msix"):
          xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
          xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
          IgnorableNamespaces="uap rescap">
-  <Identity Name="KaiOlafKetelhut.QxD" Publisher="CN=AB544420-238E-4D81-8809-1D4CADF99C43" Version="1.0.0.0" ProcessorArchitecture="x64" />
+  <Identity Name="KaiOlafKetelhut.QxDLayerL3Evaluator" Publisher="CN=88544420-228E-4D31-8839-1D4CADF99C43" Version="1.0.0.0" ProcessorArchitecture="x64" />
   <Properties>
     <DisplayName>QxD Layer L3 Evaluator</DisplayName>
     <PublisherDisplayName>Kai Olaf Ketelhut</PublisherDisplayName>

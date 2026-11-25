@@ -49,10 +49,12 @@ jobs:
           $manifestPath = "$pkg\AppxManifest.xml"
           $manifestText = Get-Content -Path $manifestPath -Raw
           $manifestText = $manifestText -replace 'Executable="qxd_eval\.py"', 'Executable="qxd_eval.exe"'
+          $manifestText = $manifestText -replace 'Name="KaiOlafKetelhut\.QxD"', 'Name="KaiOlafKetelhut.QxDLayerL3Evaluator"'
+          $manifestText = $manifestText -replace 'Publisher="CN=AB544420-238E-4D81-8809-1D4CADF99C43"', 'Publisher="CN=88544420-228E-4D31-8839-1D4CADF99C43"'
           Set-Content -Path $manifestPath -Value $manifestText -Encoding UTF8
 
-          if ($manifestText -match 'Executable="qxd_eval\.py"') {
-            throw "AppxManifest.xml still references qxd_eval.py"
+          if ($manifestText -notmatch 'Name="KaiOlafKetelhut\.QxDLayerL3Evaluator"' -or $manifestText -notmatch 'Publisher="CN=88544420-228E-4D31-8839-1D4CADF99C43"') {
+            throw "AppxManifest.xml identity mismatch"
           }
       - name: Pack MSIX using makeappx.exe
         shell: pwsh
