@@ -25,7 +25,7 @@ def build_qxd_msix(output_path="qxd.msix"):
          IgnorableNamespaces="uap rescap">
   <Identity Name="KaiOlafKetelhut.QxDLayerL3EvaluatorLayerL3Evaluator" Publisher="CN=88544420-228E-4D31-8839-1D4CADF99C43" Version="1.0.0.0" ProcessorArchitecture="x64" />
   <Properties>
-    <DisplayName>QxD Layer L3 Evaluator</DisplayName>
+    <DisplayName>QxD</DisplayName>
     <PublisherDisplayName>Kai Olaf Ketelhut</PublisherDisplayName>
     <Logo>Assets\\StoreLogo.png</Logo>
   </Properties>
