@@ -36,7 +36,7 @@ def build_qxd_msix(output_path="qxd.msix"):
     <Resource Language="en-us" />
   </Resources>
   <Applications>
-    <Application Id="QxDEvaluator" Executable="qxd_eval.py" EntryPoint="Windows.FullTrustApplication">
+    <Application Id="QxDEvaluator" Executable="qxd_eval.exe" EntryPoint="Windows.FullTrustApplication">
       <uap:VisualElements DisplayName="QxD Evaluator" Description="QxD Layer L3 state evaluation engine for oeneyeOS"
           BackgroundColor="#141820" Square150x150Logo="Assets\\Square150x150Logo.png" Square44x44Logo="Assets\\Square44x44Logo.png">
         <uap:DefaultTile Wide310x150Logo="Assets\\Wide310x150Logo.png" />

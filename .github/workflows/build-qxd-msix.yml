@@ -18,6 +18,27 @@ jobs:
           New-Item -ItemType Directory -Force -Path "$pkg\Assets" | Out-Null
           New-Item -ItemType Directory -Force -Path "$pkg\sandbox" | Out-Null
 
+          @'
+          #include <process.h>
+          #include <string.h>
+          #include <stdio.h>
+
+          int main(int argc, char **argv) {
+            const char *args[128];
+            int idx = 0;
+            args[idx++] = "python";
+            args[idx++] = "qxd_eval.py";
+            for (int i = 1; i < argc && idx < 126; ++i) {
+              args[idx++] = argv[i];
+            }
+            args[idx] = NULL;
+            return _spawnvp(_P_WAIT, "python", args);
+          }
+          '@ | Set-Content -Path "$env:RUNNER_TEMP\qxd_eval.c" -Encoding ASCII
+
+          gcc -O2 "$env:RUNNER_TEMP\qxd_eval.c" -o "$pkg\qxd_eval.exe"
+          if (-not (Test-Path "$pkg\qxd_eval.exe")) { throw "Failed to build qxd_eval.exe" }
+
           Copy-Item qxd_eval.py "$pkg\"
           Copy-Item test_qxd_eval.py "$pkg\"
           Copy-Item sandbox\*.qxd "$pkg\sandbox\"
