@@ -30,21 +30,21 @@ def build_qxd_msix(output_path="qxd.msix"):
     <Logo>Assets\\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
-    <TargetDeviceFamily Name="KaiOlafKetelhut.QxD" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0" />
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0" />
   </Dependencies>
   <Resources>
     <Resource Language="en-us" />
   </Resources>
   <Applications>
     <Application Id="QxDEvaluator" Executable="qxd_eval.py" EntryPoint="Windows.FullTrustApplication">
-      <uap:VisualElements DisplayName="KaiOlafKetelhut.QxD" Description="QxD Layer L3 state evaluation engine for oeneyeOS"
+      <uap:VisualElements DisplayName="QxD Evaluator" Description="QxD Layer L3 state evaluation engine for oeneyeOS"
           BackgroundColor="#141820" Square150x150Logo="Assets\\Square150x150Logo.png" Square44x44Logo="Assets\\Square44x44Logo.png">
         <uap:DefaultTile Wide310x150Logo="Assets\\Wide310x150Logo.png" />
       </uap:VisualElements>
     </Application>
   </Applications>
   <Capabilities>
-    <rescap:Capability Name="KaiOlafKetelhut.QxD" />
+    <rescap:Capability Name="runFullTrust" />
   </Capabilities>
 </Package>
 """
