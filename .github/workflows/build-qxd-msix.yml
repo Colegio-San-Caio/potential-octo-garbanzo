@@ -17,11 +17,9 @@ jobs:
           $pkg = "$env:RUNNER_TEMP\qxd-pkg"
           New-Item -ItemType Directory -Force -Path "$pkg\Assets" | Out-Null
           New-Item -ItemType Directory -Force -Path "$pkg\sandbox" | Out-Null
-
           Copy-Item qxd_eval.py "$pkg\"
           Copy-Item test_qxd_eval.py "$pkg\"
           Copy-Item sandbox\*.qxd "$pkg\sandbox\"
-
           python make_qxd_msix.py
           Copy-Item qxd_layout\Assets\* "$pkg\Assets\"
           Copy-Item qxd_layout\AppxManifest.xml "$pkg\"
