@@ -20,8 +20,6 @@ jobs:
 
           @'
           #include <process.h>
-          #include <string.h>
-          #include <stdio.h>
 
           int main(int argc, char **argv) {
             const char *args[128];
@@ -31,7 +29,7 @@ jobs:
             for (int i = 1; i < argc && idx < 126; ++i) {
               args[idx++] = argv[i];
             }
-            args[idx] = NULL;
+            args[idx] = 0;
             return _spawnvp(_P_WAIT, "python", args);
           }
           '@ | Set-Content -Path "$env:RUNNER_TEMP\qxd_eval.c" -Encoding ASCII
@@ -47,6 +45,15 @@ jobs:
           Copy-Item qxd_layout\Assets\* "$pkg\Assets\"
           Copy-Item qxd_layout\AppxManifest.xml "$pkg\"
           Copy-Item qxd_layout\[Content_Types].xml "$pkg\"
+
+          $manifestPath = "$pkg\AppxManifest.xml"
+          $manifestText = Get-Content -Path $manifestPath -Raw
+          $manifestText = $manifestText -replace 'Executable="qxd_eval\.py"', 'Executable="qxd_eval.exe"'
+          Set-Content -Path $manifestPath -Value $manifestText -Encoding UTF8
+
+          if ($manifestText -match 'Executable="qxd_eval\.py"') {
+            throw "AppxManifest.xml still references qxd_eval.py"
+          }
       - name: Pack MSIX using makeappx.exe
         shell: pwsh
         run: |
