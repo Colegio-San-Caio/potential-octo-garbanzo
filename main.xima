@@ -1,0 +1,13 @@
+# main.xima - QxD Layer L3 State Exchange Format for oeneyeOS
+# Profile: KDPMember:KL5UQ4f48673352
+# BOA: application/vnd.x-mosfetq-dos-image
+# Port: 8038
+# Flop Quadruple: 4+16+64=84
+
+S[-]S
+S[+]S
+S[0]S
+S[+]S
+0;
+S[-]S
+S[0]S
