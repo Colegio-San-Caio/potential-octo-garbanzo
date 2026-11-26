@@ -39,7 +39,7 @@
     "satori-html": "0.3.2",
     "sharp": "0.35.5",
     "sitemap": "10.0.0",
-    "unpdf": "2.2.1",
+    "unpdf": "2.2.2",
     "vue": "3.5.46",
     "vue-tsc": "3.3.14",
     "yaml": "2.9.1",
@@ -50,7 +50,7 @@
     "@types/node": "26.6.6",
     "@types/sanitize-html": "2.16.2",
     "fastify": "5.12.8",
-    "oxfmt": "0.79.0",
+    "oxfmt": "0.80.0",
     "typescript": "7.0.2",
     "vitest": "5.1.1"
   }
