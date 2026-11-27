@@ -20,8 +20,8 @@
     "format": "oxfmt --ignore-path=.oxfmtignore ."
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1176.0",
-    "@aws-sdk/core": "3.981.1",
+    "@aws-sdk/client-s3": "3.1177.0",
+    "@aws-sdk/core": "3.981.2",
     "@napi-rs/canvas": "1.2.0",
     "@supercharge/promise-pool": "3.3.0",
     "@types/luxon": "3.7.6",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@types/jsdom": "30.0.0",
-    "@types/node": "26.6.6",
+    "@types/node": "26.6.7",
     "@types/sanitize-html": "2.16.2",
     "fastify": "5.12.8",
     "oxfmt": "0.80.0",
